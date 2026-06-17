@@ -83,37 +83,37 @@ const features = [
 
 const plans = [
   {
-    name: "Monthly Subscription",
-    price: "100",
+    name: "Starter Marketing",
+    price: "299",
     benefits: [
-      "Free Consultation",
-      "Content Quality and Business Suggestion",
-      "Single Payment Solution",
-      "24 Hours Customer Service",
-      "Email Support",
+      "Brand strategy consultation",
+      "Social media content planning",
+      "Basic campaign creative direction",
+      "Monthly performance summary",
+      "Email support",
     ],
   },
   {
-    name: "Quarterly Subscription",
-    price: "250",
+    name: "Growth Campaign",
+    price: "699",
     featured: true,
     benefits: [
-      "Free Consultation",
-      "Individual Assistance for Business Suggestion",
-      "Multiple Payment Solutions",
-      "24 Hours Customer Service",
-      "Full Support",
+      "Digital advertising management",
+      "Creative design and ad assets",
+      "Social media campaign support",
+      "Landing page recommendations",
+      "Bi-weekly performance updates",
     ],
   },
   {
-    name: "Yearly Subscription",
-    price: "500",
+    name: "Full-Service Marketing",
+    price: "1499",
     benefits: [
-      "Free Consultation",
-      "Real Time Assistance for Business Suggestion",
-      "Multiple Payment Solutions",
-      "24 Hours Customer Service",
-      "Full Support",
+      "Brand strategy and positioning",
+      "Digital ads, content, and creative design",
+      "Social media and growth marketing",
+      "Website and landing page support",
+      "Priority strategy and reporting",
     ],
   },
 ];
@@ -368,11 +368,12 @@ function App() {
           <div className="section-heading">
             <span className="eyebrow dark">Choose Your</span>
             <h2>
-              Pricing <span>Plan</span>
+              Marketing <span>Pricing Plans</span>
             </h2>
             <p>
-              Flexible expert support designed around the pace and goals of your
-              business.
+              Flexible packages for brand strategy, digital advertising,
+              creative design, social media, content production, and growth
+              marketing.
             </p>
           </div>
           <div className="pricing-grid">
@@ -383,10 +384,11 @@ function App() {
               >
                 {plan.featured && <div className="popular">Most popular</div>}
                 <h3>{plan.name}</h3>
+                <div className="price-label">Starting from</div>
                 <div className="price">
                   <sup>$</sup>
                   {plan.price}
-                  <small>/ plan</small>
+                  <small>/ month</small>
                 </div>
                 <ul>
                   {plan.benefits.map((benefit) => (
@@ -396,7 +398,7 @@ function App() {
                     </li>
                   ))}
                 </ul>
-                <Button light={!plan.featured}>Order Now</Button>
+                <Button light={!plan.featured}>Get Started</Button>
               </article>
             ))}
           </div>

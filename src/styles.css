@@ -27,6 +27,9 @@
 .footer-services{margin-top:12px}
 .footer-meaning{color:#d7e6ee!important;font-weight:600}
 
+.price-label{margin-top:28px;color:#169cad;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.price-card.featured .price-label{color:var(--cyan2)}
+
 .contact-cta{background:var(--navy)!important;color:#fff;position:relative;overflow:hidden;display:grid!important;grid-template-columns:minmax(0,1fr) 330px;align-items:center}
 .contact-cta:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:44px 44px}
 .contact-cta:after{content:"";position:absolute;width:360px;height:360px;border:58px solid rgba(37,199,217,.12);border-radius:50%;right:-120px;top:-150px}
