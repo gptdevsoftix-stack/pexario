@@ -16,10 +16,11 @@ import {
   Target,
   X,
 } from 'lucide-react'
+import modernAdvertisingStudioLogo from './assets/modern-advertising-studio-logo.png'
 
 const assets = {
-  logo: 'https://pexario.com/wp-content/uploads/2024/11/Pexario.webp',
-  footerLogo: 'https://pexario.com/wp-content/uploads/2021/10/Pexario_ft.webp',
+  logo: modernAdvertisingStudioLogo,
+  footerLogo: modernAdvertisingStudioLogo,
   hero: 'https://pexario.com/wp-content/uploads/2026/04/pexerio-bg-pic.webp',
   start: 'https://pexario.com/wp-content/uploads/2023/01/How-to-Start.webp',
   vision: 'https://pexario.com/wp-content/uploads/2023/01/image-3a.webp',
@@ -83,7 +84,7 @@ function App() {
   return (
     <>
       <header className="site-header">
-        <a href="#home" className="logo"><img src={assets.logo} alt="Pexario" /></a>
+        <a href="#home" className="logo"><img src={assets.logo} alt="Modern Advertising Agency" /></a>
         <nav className={menuOpen ? 'open' : ''}>
           {nav.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
         </nav>
@@ -214,7 +215,7 @@ function App() {
 
       <footer>
         <div className="footer-main">
-          <div><img className="footer-logo" src={assets.footerLogo} alt="Pexario" /><p>Transforming complex technology into clear business advantage.</p></div>
+          <div><img className="footer-logo" src={assets.footerLogo} alt="Modern Advertising Agency" /><p>Transforming complex technology into clear business advantage.</p></div>
           <div><h4>Contact</h4><a href="tel:18009820680"><Phone size={16} /> 1 800 982 0680</a><a href="mailto:care@pexario.com"><Mail size={16} /> care@pexario.com</a></div>
           <div><h4>Quick links</h4>{nav.map(([label, id]) => <a key={id} href={`#${id}`}>{label}</a>)}</div>
           <div><h4>Follow us</h4><div className="socials"><a href="#"><Facebook /></a><a href="#"><Instagram /></a><a href="#"><Linkedin /></a></div></div>
