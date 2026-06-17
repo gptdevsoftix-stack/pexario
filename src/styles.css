@@ -30,6 +30,23 @@
 .price-label{margin-top:28px;color:#169cad;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
 .price-card.featured .price-label{color:var(--cyan2)}
 
+.site-header nav button{border:0;background:none;padding:0;color:inherit;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.site-header nav button:hover{color:var(--cyan)}
+.footer-main button{border:0;background:none;padding:0;color:#9eb0bc;font:inherit;font-size:12px;margin-bottom:13px;display:block;cursor:pointer;text-align:left}
+.footer-main button:hover{color:var(--cyan2)}
+.legal-page{background:#fff}
+.legal-hero{background:var(--navy);padding:110px max(24px,calc((100% - 1220px)/2)) 80px;position:relative;overflow:hidden}
+.legal-hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px}
+.legal-hero>*{position:relative;z-index:1}
+.legal-hero h1{color:#fff;font-size:clamp(2.8rem,5vw,4.8rem);margin-bottom:22px}
+.legal-hero p{color:#c2d2dd;max-width:820px;margin-bottom:20px}
+.legal-hero small{color:var(--cyan2);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.legal-content{max-width:900px;margin:auto;padding:80px 24px 100px}
+.legal-content article{border-bottom:1px solid #e5eef0;padding:0 0 28px;margin-bottom:28px}
+.legal-content h2{font-size:24px;letter-spacing:0;margin-bottom:12px}
+.legal-content p{font-size:15px}
+.legal-note{background:var(--light);padding:22px;margin:32px 0;color:#516576}
+
 .contact-cta{background:var(--navy)!important;color:#fff;position:relative;overflow:hidden;display:grid!important;grid-template-columns:minmax(0,1fr) 330px;align-items:center}
 .contact-cta:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:44px 44px}
 .contact-cta:after{content:"";position:absolute;width:360px;height:360px;border:58px solid rgba(37,199,217,.12);border-radius:50%;right:-120px;top:-150px}

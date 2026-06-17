@@ -38,6 +38,83 @@ const nav = [
   ["Plans", "plans"],
 ];
 
+const legalPages = {
+  privacy: {
+    title: "Privacy Policy",
+    intro:
+      "This Privacy Policy explains how MAAINT.co collects, uses, and protects information shared with us through our website, consultation forms, and client communications.",
+    sections: [
+      [
+        "Information We Collect",
+        "We may collect your name, email address, project details, business information, and any message you choose to send through our forms or direct email.",
+      ],
+      [
+        "How We Use Information",
+        "We use your information to respond to inquiries, provide consultations, prepare proposals, deliver marketing services, improve our website, and communicate about relevant services.",
+      ],
+      [
+        "Marketing And Analytics",
+        "We may review website usage and campaign performance data to improve user experience and service quality. We do not sell personal information.",
+      ],
+      [
+        "Information Sharing",
+        "We only share information with trusted service providers when needed to operate our website, respond to requests, or deliver agreed services. We may also disclose information if required by law.",
+      ],
+      [
+        "Data Security",
+        "We use reasonable administrative and technical safeguards to protect information, but no online transmission or storage method can be guaranteed to be completely secure.",
+      ],
+      [
+        "Your Choices",
+        "You may contact us to request access, correction, or deletion of your personal information where applicable.",
+      ],
+      [
+        "Contact",
+        "For privacy questions, contact us at hello@maaint.co.",
+      ],
+    ],
+  },
+  terms: {
+    title: "Terms & Conditions",
+    intro:
+      "These Terms & Conditions outline the rules for using MAAINT.co and engaging with MAAINT for advertising, creative, and marketing services.",
+    sections: [
+      [
+        "Use Of Website",
+        "By using this website, you agree to use it lawfully and not attempt to disrupt, copy, misuse, or interfere with its content, forms, or functionality.",
+      ],
+      [
+        "Service Information",
+        "Website content, pricing, packages, and service descriptions are provided for general information and may change based on project scope, market requirements, and client needs.",
+      ],
+      [
+        "Proposals And Payments",
+        "Final deliverables, timelines, fees, payment terms, and responsibilities are confirmed in a separate proposal, invoice, agreement, or written communication.",
+      ],
+      [
+        "Client Responsibilities",
+        "Clients are responsible for providing accurate information, timely feedback, brand assets, approvals, and any permissions needed to complete marketing work.",
+      ],
+      [
+        "Intellectual Property",
+        "MAAINT retains ownership of its pre-existing methods, templates, processes, and internal materials. Client deliverable ownership is defined by the approved project agreement.",
+      ],
+      [
+        "No Guaranteed Results",
+        "We work to improve marketing performance, but advertising results can vary based on budget, audience, competition, platform changes, offer quality, and market conditions.",
+      ],
+      [
+        "Limitation Of Liability",
+        "To the fullest extent permitted by law, MAAINT is not liable for indirect, incidental, or consequential damages related to website use or services.",
+      ],
+      [
+        "Contact",
+        "For questions about these terms, contact us at hello@maaint.co.",
+      ],
+    ],
+  },
+};
+
 const features = [
   {
     icon: ShieldCheck,
@@ -50,32 +127,32 @@ const features = [
     text: "Reach your ideal audience through targeted campaigns across Google, Meta, YouTube, LinkedIn, and emerging advertising platforms.",
   },
   {
-    icon: Clock3,
+    icon: TrendingUp,
     title: "Social Media Marketing",
     text: "Transform your social channels into growth engines with engaging content, community management, and strategic advertising campaigns.",
   },
   {
-    icon: Clock3,
+    icon: SlidersHorizontal,
     title: "Creative Design & Visual Branding",
     text: "From logos and brand systems to campaign creatives and promotional assets, we create visuals that strengthen recognition and trust.",
   },
   {
-    icon: Clock3,
+    icon: Palette,
     title: "Content Production",
     text: "Our creative team develops high-impact content including videos, graphics, ad creatives, website content, and marketing materials that engage audiences and drive conversions.",
   },
   {
-    icon: Clock3,
+    icon: MessagesSquare,
     title: "Website & Landing Page Development",
     text: "Modern, responsive, and conversion-focused websites designed to support your advertising campaigns and maximize customer acquisition.",
   },
   {
-    icon: Clock3,
+    icon: Quote,
     title: "Search Engine Marketing",
     text: "Generate qualified traffic through paid search campaigns and strategic optimization that increase visibility and deliver measurable returns.",
   },
   {
-    icon: Clock3,
+    icon: Target,
     title: "Marketing Automation",
     text: "Streamline customer journeys with intelligent automation systems that nurture leads and improve conversion rates.",
   },
@@ -194,23 +271,91 @@ const testimonials = [
   ],
 ];
 
-function Button({ children, light = false, href = "#contact" }) {
+function Button({ children, light = false, onClick }) {
   return (
-    <a className={`button ${light ? "button-light" : ""}`} href={href}>
+    <button
+      className={`button ${light ? "button-light" : ""}`}
+      type="button"
+      onClick={onClick}
+    >
       {children}
       <ArrowRight size={17} />
-    </a>
+    </button>
+  );
+}
+
+function LegalPage({ page, onBack }) {
+  return (
+    <main className="legal-page">
+      <section className="legal-hero">
+        <span className="eyebrow">MAAINT.co</span>
+        <h1>{page.title}</h1>
+        <p>{page.intro}</p>
+        <small>{page.updated}</small>
+      </section>
+      <section className="legal-content">
+        {page.sections.map(([title, text]) => (
+          <article key={title}>
+            <h2>{title}</h2>
+            <p>{text}</p>
+          </article>
+        ))}
+        <p className="legal-note">
+          This page is provided for general business transparency and should be
+          reviewed by qualified legal counsel for your specific jurisdiction and
+          operating requirements.
+        </p>
+        <button className="button" type="button" onClick={onBack}>
+          Back to Home <ArrowRight size={17} />
+        </button>
+      </section>
+    </main>
   );
 }
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
+  const [legalPage, setLegalPage] = useState(null);
+
+  function openHome() {
+    setLegalPage(null);
+    setMenuOpen(false);
+    window.requestAnimationFrame(() => {
+      window.location.hash = "home";
+    });
+  }
+
+  function openLegalPage(page) {
+    setLegalPage(page);
+    setMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function openConsultationForm() {
+    setQuoteOpen(true);
+  }
+
+  function handleConsultationSubmit(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const message = formData.get("message") || "No project details provided.";
+    const subject = encodeURIComponent("New consultation request from MAAINT.co");
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nProject details:\n${message}`
+    );
+
+    window.location.href = `mailto:hello@maaint.co?subject=${subject}&body=${body}`;
+    setQuoteOpen(false);
+  }
 
   return (
     <>
       <header className="site-header">
-        <a href="#home" className="logo">
+        <a href="#home" className="logo" onClick={openHome}>
           <img
             src={assets.logo}
             alt="MAAINT Modern Advertising Agency"
@@ -220,12 +365,25 @@ function App() {
         </a>
         <nav className={menuOpen ? "open" : ""}>
           {nav.map(([label, id]) => (
-            <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>
+            <a
+              key={id}
+              href={`#${id}`}
+              onClick={() => {
+                setLegalPage(null);
+                setMenuOpen(false);
+              }}
+            >
               {label}
             </a>
           ))}
+          <button type="button" onClick={() => openLegalPage("privacy")}>
+            Privacy Policy
+          </button>
+          <button type="button" onClick={() => openLegalPage("terms")}>
+            Terms
+          </button>
         </nav>
-        <button className="quote-button" onClick={() => setQuoteOpen(true)}>
+        <button className="quote-button" onClick={openConsultationForm}>
           Get quote <ArrowRight size={16} />
         </button>
         <button
@@ -238,6 +396,9 @@ function App() {
         </button>
       </header>
 
+      {legalPage ? (
+        <LegalPage page={legalPages[legalPage]} onBack={openHome} />
+      ) : (
       <main>
         <section className="hero" id="home">
           <div className="hero-glow" />
@@ -256,7 +417,9 @@ function App() {
               business, or entering a competitive market, our team creates
               advertising strategies designed to deliver real business results.
             </p>
-            <Button href="#about">Let's Build Your Next Growth Campaign</Button>
+            <Button onClick={openConsultationForm}>
+              Let's Build Your Next Growth Campaign
+            </Button>
           </div>
           <div className="hero-visual">
             <div className="orbit orbit-one" />
@@ -306,7 +469,7 @@ function App() {
               action. From startups to established enterprises, we help brands
               build stronger market presence and sustainable growth.
             </p>
-            <Button href="#contact">About us</Button>
+            <Button onClick={openConsultationForm}>About us</Button>
           </div>
         </section>
 
@@ -327,7 +490,13 @@ function App() {
                 </div>
                 <h3>{title}</h3>
                 <p>{text}</p>
-                <a href="#contact">
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openConsultationForm();
+                  }}
+                >
                   Learn more <ArrowRight size={16} />
                 </a>
               </article>
@@ -398,7 +567,9 @@ function App() {
                     </li>
                   ))}
                 </ul>
-                <Button light={!plan.featured}>Get Started</Button>
+                <Button light={!plan.featured} onClick={openConsultationForm}>
+                  Get Started
+                </Button>
               </article>
             ))}
           </div>
@@ -423,7 +594,7 @@ function App() {
                 </article>
               ))}
             </div>
-            <Button href="#contact">Start Your Campaign</Button>
+            <Button onClick={openConsultationForm}>Start Your Campaign</Button>
           </div>
         </section>
 
@@ -503,7 +674,7 @@ function App() {
               </span>
             </div>
             <div className="cta-actions">
-              <button className="button" onClick={() => setQuoteOpen(true)}>
+              <button className="button" onClick={openConsultationForm}>
                 Book Your Free Consultation Today
                 <ArrowRight size={17} />
               </button>
@@ -520,6 +691,7 @@ function App() {
           </div>
         </section>
       </main>
+      )}
 
       <footer>
         <div className="footer-main">
@@ -552,11 +724,13 @@ function App() {
             </a>
           </div>
           <div>
-            <h4>MAAINT Meaning</h4>
-            <p className="footer-meaning">
-              Modern Advertising And Innovation Network Team
-            </p>
-            <p>A premium agency identity with a unique and memorable name.</p>
+            <h4>Legal</h4>
+            <button type="button" onClick={() => openLegalPage("privacy")}>
+              Privacy Policy
+            </button>
+            <button type="button" onClick={() => openLegalPage("terms")}>
+              Terms & Conditions
+            </button>
           </div>
           <div>
             <h4>Follow us</h4>
@@ -574,7 +748,7 @@ function App() {
           </div>
         </div>
         <div className="footer-bottom">
-          Copyright &copy; 2025, MAAINT.co All Rights Reserved.
+          Copyright &copy; Reserved by Maainternational LLC.
         </div>
       </footer>
 
@@ -593,15 +767,19 @@ function App() {
             <p>
               We are ready to answer right now! Sign up for a free consultation.
             </p>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setQuoteOpen(false);
-              }}
-            >
-              <input required placeholder="Your name" />
-              <input required type="email" placeholder="Email address" />
-              <textarea placeholder="Tell us about your project" rows="4" />
+            <form onSubmit={handleConsultationSubmit}>
+              <input name="name" required placeholder="Your name" />
+              <input
+                name="email"
+                required
+                type="email"
+                placeholder="Email address"
+              />
+              <textarea
+                name="message"
+                placeholder="Tell us about your project"
+                rows="4"
+              />
               <button className="button">
                 Send request <ArrowRight size={17} />
               </button>
