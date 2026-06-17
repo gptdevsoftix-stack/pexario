@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react";
 import {
   ArrowRight,
   Check,
@@ -6,155 +6,269 @@ import {
   Clock3,
   Facebook,
   Instagram,
+  Lightbulb,
   Linkedin,
   Mail,
+  MessagesSquare,
   Menu,
-  Phone,
+  Palette,
   Quote,
   Rocket,
   ShieldCheck,
+  SlidersHorizontal,
   Target,
+  TrendingUp,
   X,
-} from 'lucide-react'
-import modernAdvertisingStudioLogo from './assets/modern-advertising-studio-logo.png'
+} from "lucide-react";
+import modernAdvertisingStudioLogo from "./assets/modern-advertising-studio-logo.png";
 
 const assets = {
   logo: modernAdvertisingStudioLogo,
   footerLogo: modernAdvertisingStudioLogo,
-  hero: 'https://pexario.com/wp-content/uploads/2026/04/pexerio-bg-pic.webp',
-  start: 'https://pexario.com/wp-content/uploads/2023/01/How-to-Start.webp',
-  vision: 'https://pexario.com/wp-content/uploads/2023/01/image-3a.webp',
-  growth: 'https://pexario.com/wp-content/uploads/2023/12/growth-step.webp',
-}
+  hero: "https://pexario.com/wp-content/uploads/2026/04/pexerio-bg-pic.webp",
+  start: "https://pexario.com/wp-content/uploads/2023/01/How-to-Start.webp",
+  vision: "https://pexario.com/wp-content/uploads/2023/01/image-3a.webp",
+  growth: "https://pexario.com/wp-content/uploads/2023/12/growth-step.webp",
+};
 
 const nav = [
-  ['Home', 'home'],
-  ['Services', 'services'],
-  ['About Us', 'about'],
-  ['Plans', 'plans'],
-]
+  ["Home", "home"],
+  ["Services", "services"],
+  ["About Us", "about"],
+  ["Plans", "plans"],
+];
 
 const features = [
   {
     icon: ShieldCheck,
-    title: 'Cooperation with you',
-    text: 'We take the time to understand your unique needs and goals, working side-by-side to craft solutions that empower your success.',
+    title: "Brand Strategy & Positioning",
+    text: "Build a powerful foundation for long-term success. We develop clear brand identities, messaging frameworks, and positioning strategies that help businesses stand apart from competitors.",
   },
   {
     icon: Rocket,
-    title: 'Growing your business',
-    text: 'From streamlined processes to optimized IT, we unlock the potential of your business, driving efficiency and propelling you forward.',
+    title: "Digital Advertising",
+    text: "Reach your ideal audience through targeted campaigns across Google, Meta, YouTube, LinkedIn, and emerging advertising platforms.",
   },
   {
     icon: Clock3,
-    title: 'Save your time',
-    text: 'We free you from day-to-day IT burdens, allowing you to focus on what matters most - achieving your strategic goals.',
+    title: "Social Media Marketing",
+    text: "Transform your social channels into growth engines with engaging content, community management, and strategic advertising campaigns.",
   },
-]
+  {
+    icon: Clock3,
+    title: "Creative Design & Visual Branding",
+    text: "From logos and brand systems to campaign creatives and promotional assets, we create visuals that strengthen recognition and trust.",
+  },
+  {
+    icon: Clock3,
+    title: "Content Production",
+    text: "Our creative team develops high-impact content including videos, graphics, ad creatives, website content, and marketing materials that engage audiences and drive conversions.",
+  },
+  {
+    icon: Clock3,
+    title: "Website & Landing Page Development",
+    text: "Modern, responsive, and conversion-focused websites designed to support your advertising campaigns and maximize customer acquisition.",
+  },
+  {
+    icon: Clock3,
+    title: "Search Engine Marketing",
+    text: "Generate qualified traffic through paid search campaigns and strategic optimization that increase visibility and deliver measurable returns.",
+  },
+  {
+    icon: Clock3,
+    title: "Marketing Automation",
+    text: "Streamline customer journeys with intelligent automation systems that nurture leads and improve conversion rates.",
+  },
+];
 
 const plans = [
   {
-    name: 'Monthly Subscription',
-    price: '100',
-    benefits: ['Free Consultation', 'Content Quality and Business Suggestion', 'Single Payment Solution', '24 Hours Customer Service', 'Email Support'],
+    name: "Monthly Subscription",
+    price: "100",
+    benefits: [
+      "Free Consultation",
+      "Content Quality and Business Suggestion",
+      "Single Payment Solution",
+      "24 Hours Customer Service",
+      "Email Support",
+    ],
   },
   {
-    name: 'Quarterly Subscription',
-    price: '250',
+    name: "Quarterly Subscription",
+    price: "250",
     featured: true,
-    benefits: ['Free Consultation', 'Individual Assistance for Business Suggestion', 'Multiple Payment Solutions', '24 Hours Customer Service', 'Full Support'],
+    benefits: [
+      "Free Consultation",
+      "Individual Assistance for Business Suggestion",
+      "Multiple Payment Solutions",
+      "24 Hours Customer Service",
+      "Full Support",
+    ],
   },
   {
-    name: 'Yearly Subscription',
-    price: '500',
-    benefits: ['Free Consultation', 'Real Time Assistance for Business Suggestion', 'Multiple Payment Solutions', '24 Hours Customer Service', 'Full Support'],
+    name: "Yearly Subscription",
+    price: "500",
+    benefits: [
+      "Free Consultation",
+      "Real Time Assistance for Business Suggestion",
+      "Multiple Payment Solutions",
+      "24 Hours Customer Service",
+      "Full Support",
+    ],
   },
-]
+];
 
-const partners = ['microsoft', 'figma', 'PINTEREST', 'sketch', 'slack']
+const partners = ["microsoft", "figma", "PINTEREST", "sketch", "slack"];
 
-function Button({ children, light = false, href = '#contact' }) {
-  return <a className={`button ${light ? 'button-light' : ''}`} href={href}>{children}<ArrowRight size={17} /></a>
+function Button({ children, light = false, href = "#contact" }) {
+  return (
+    <a className={`button ${light ? "button-light" : ""}`} href={href}>
+      {children}
+      <ArrowRight size={17} />
+    </a>
+  );
 }
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [quoteOpen, setQuoteOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [quoteOpen, setQuoteOpen] = useState(false);
 
   return (
     <>
       <header className="site-header">
-        <a href="#home" className="logo"><img src={assets.logo} alt="Modern Advertising Agency" /></a>
-        <nav className={menuOpen ? 'open' : ''}>
-          {nav.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
+        <a href="#home" className="logo">
+          <img src={assets.logo} alt="Modern Advertising Agency" />
+        </a>
+        <nav className={menuOpen ? "open" : ""}>
+          {nav.map(([label, id]) => (
+            <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>
+              {label}
+            </a>
+          ))}
         </nav>
-        <button className="quote-button" onClick={() => setQuoteOpen(true)}>Get quote <ArrowRight size={16} /></button>
-        <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">{menuOpen ? <X /> : <Menu />}</button>
+        <button className="quote-button" onClick={() => setQuoteOpen(true)}>
+          Get quote <ArrowRight size={16} />
+        </button>
+        <button
+          className="menu-button"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X /> : <Menu />}
+        </button>
       </header>
 
       <main>
         <section className="hero" id="home">
           <div className="hero-glow" />
           <div className="hero-content">
-            <span className="eyebrow">Trusted partner for Fortune 500s and growing businesses alike</span>
-            <h1>Achieve Strategic Goals with <span>Expert IT Consulting</span></h1>
-            <p>Whether you’re navigating complex legacy systems, seeking to adopt new technologies, or building a secure and scalable IT foundation, we’re your trusted partner every step of the way.</p>
-            <Button href="#about">Learn more</Button>
+            <span className="eyebrow">
+              Creative Campaigns. Smarter Strategy. Measurable Growth.
+            </span>
+            <h1>
+              Advertising That <span>Moves Brands Forward</span>
+            </h1>
+            <p>
+              At MAAINT, we help ambitious businesses attract attention, build
+              meaningful customer relationships, and accelerate growth through
+              innovative advertising, branding, and digital marketing solutions.
+              Whether you're launching a new brand, scaling an existing
+              business, or entering a competitive market, our team creates
+              advertising strategies designed to deliver real business results.
+            </p>
+            <Button href="#about">Let's Build Your Next Growth Campaign</Button>
           </div>
           <div className="hero-visual">
             <div className="orbit orbit-one" />
             <div className="orbit orbit-two" />
             <img src={assets.hero} alt="Pexario technology illustration" />
-            <div className="float-card card-one"><Target size={22} /><strong>Smart strategy</strong><span>Built for growth</span></div>
-            <div className="float-card card-two"><ShieldCheck size={22} /><strong>Secure systems</strong><span>Always protected</span></div>
+            <div className="float-card card-one">
+              <Target size={22} />
+              <strong>Smart strategy</strong>
+              <span>Built for growth</span>
+            </div>
+            <div className="float-card card-two">
+              <ShieldCheck size={22} />
+              <strong>Secure systems</strong>
+              <span>Always protected</span>
+            </div>
           </div>
         </section>
 
         <section className="section split" id="about">
           <div className="image-stage">
             <div className="dots" />
-            <img src={assets.start} alt="How to start" />
+            <img src={assets.start} alt="ABOUT US" />
           </div>
           <div className="section-copy">
-            <span className="eyebrow dark">How to Start</span>
-            <h2>You Can Entrust Your <span>Business to Us</span></h2>
-            <p>Our data-driven approach and proven methodologies unlock the true potential of your technology, boosting efficiency, productivity, and bottom line results. Witness the power of IT when it's not just maintained, but optimized for growth.</p>
-            <ul className="check-list">
-              <li><Check /> Get a Custom Quote</li>
-              <li><Check /> Explore Our Services</li>
-              <li><Check /> Contact Us Today</li>
-            </ul>
+            <span className="eyebrow dark">ABOUT US</span>
+            <h2>
+              The Modern Advertising Agency{" "}
+              <span>Built for Today's Brands</span>
+            </h2>
+            <p>
+              MAAINT is a forward-thinking advertising agency that combines
+              creativity, market intelligence, and performance marketing to help
+              brands thrive in a rapidly evolving digital landscape. We believe
+              successful advertising goes beyond visibility. It requires
+              strategy, compelling storytelling, audience understanding, and
+              continuous optimization. Our team works closely with businesses to
+              create campaigns that not only capture attention but also inspire
+              action. From startups to established enterprises, we help brands
+              build stronger market presence and sustainable growth.
+            </p>
             <Button href="#contact">About us</Button>
           </div>
         </section>
 
         <section className="services section" id="services">
           <div className="section-heading">
-            <span className="eyebrow dark">How We Help</span>
-            <h2>Technology that moves your <span>business forward</span></h2>
+            <span className="eyebrow dark">OUR SERVICES</span>
+            <h2>
+              Comprehensive Advertising Solutions
+              <span> Under One Roof</span>
+            </h2>
           </div>
           <div className="feature-grid">
             {features.map(({ icon: Icon, title, text }, index) => (
               <article className="feature-card" key={title}>
                 <div className="feature-number">0{index + 1}</div>
-                <div className="icon-box"><Icon /></div>
+                <div className="icon-box">
+                  <Icon />
+                </div>
                 <h3>{title}</h3>
                 <p>{text}</p>
-                <a href="#contact">Learn more <ArrowRight size={16} /></a>
+                <a href="#contact">
+                  Learn more <ArrowRight size={16} />
+                </a>
               </article>
             ))}
           </div>
         </section>
 
         <section className="impact">
-          <div className="impact-image"><img src={assets.vision} alt="Business technology impact" /></div>
+          <div className="impact-image">
+            <img src={assets.vision} alt="Business technology impact" />
+          </div>
           <div className="impact-content">
-            <span className="eyebrow">From Vision to Impact:</span>
-            <h2>What Our Clients Achieve with Our IT Expertise</h2>
-            <p>At Pexario, we don't just offer IT solutions, we partner with businesses to unlock their full potential.</p>
+            <span className="eyebrow">
+              Helping Brands Create Meaningful Impact
+            </span>
+            <h2>Millions of Consumer Impressions Generated</h2>
+
             <div className="stats">
-              {[['2012', 'Founding year'], ['2000', 'Happy customers'], ['190', 'Companies work with us'], ['750', 'Projects completed']].map(([number, label]) => (
-                <div className="stat" key={label}><strong>{number}<span>+</span></strong><small>{label}</small></div>
+              {[
+                ["300+", "Projects Delivered"],
+                ["150+", "Brands Supported"],
+                ["10+", " Industries Served"],
+              ].map(([number, label]) => (
+                <div className="stat" key={label}>
+                  <strong>
+                    {number}
+                    <span>+</span>
+                  </strong>
+                  <small>{label}</small>
+                </div>
               ))}
             </div>
           </div>
@@ -163,84 +277,316 @@ function App() {
         <section className="section pricing" id="plans">
           <div className="section-heading">
             <span className="eyebrow dark">Choose Your</span>
-            <h2>Pricing <span>Plan</span></h2>
-            <p>Flexible expert support designed around the pace and goals of your business.</p>
+            <h2>
+              Pricing <span>Plan</span>
+            </h2>
+            <p>
+              Flexible expert support designed around the pace and goals of your
+              business.
+            </p>
           </div>
           <div className="pricing-grid">
-            {plans.map(plan => (
-              <article className={`price-card ${plan.featured ? 'featured' : ''}`} key={plan.name}>
+            {plans.map((plan) => (
+              <article
+                className={`price-card ${plan.featured ? "featured" : ""}`}
+                key={plan.name}
+              >
                 {plan.featured && <div className="popular">Most popular</div>}
                 <h3>{plan.name}</h3>
-                <div className="price"><sup>$</sup>{plan.price}<small>/ plan</small></div>
-                <ul>{plan.benefits.map(benefit => <li key={benefit}><Check size={17} />{benefit}</li>)}</ul>
+                <div className="price">
+                  <sup>$</sup>
+                  {plan.price}
+                  <small>/ plan</small>
+                </div>
+                <ul>
+                  {plan.benefits.map((benefit) => (
+                    <li key={benefit}>
+                      <Check size={17} />
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
                 <Button light={!plan.featured}>Order Now</Button>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="next-step">
+        <section className="next-step process-section">
           <div className="next-copy">
-            <span className="eyebrow">Make your next move</span>
-            <h2>Ready to Take the Next Step?</h2>
-            <p>Technology holds incredible power to transform businesses, but navigating the ever-evolving IT landscape can be daunting. That’s where we come in. We’re your trusted IT guides, ready to partner with you on your journey to success.</p>
-            <Button href="#contact">Learn more</Button>
+            <span className="eyebrow">OUR PROCESS</span>
+            <h2>
+              How We <span>Deliver Results</span>
+            </h2>
+            <p>
+              A focused workflow that turns insight into creative campaigns,
+              launches with confidence, and keeps improving after go-live.
+            </p>
+            <div className="process-grid">
+              {[
+                [
+                  "Discover",
+                  "We analyze your industry, audience, competition, and growth opportunities.",
+                ],
+                [
+                  "Strategize",
+                  "Our team develops a customized roadmap aligned with your business goals.",
+                ],
+                [
+                  "Create",
+                  "We design compelling campaigns, content, and brand assets that capture attention.",
+                ],
+                [
+                  "Launch",
+                  "Campaigns are deployed across carefully selected channels for maximum impact.",
+                ],
+                [
+                  "Optimize",
+                  "Continuous testing and performance monitoring help improve return on investment.",
+                ],
+                [
+                  "Scale",
+                  "Successful campaigns are expanded to unlock new growth opportunities.",
+                ],
+              ].map(([title, text], index) => (
+                <article className="process-step" key={title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </article>
+              ))}
+            </div>
+            <Button href="#contact">Start Your Campaign</Button>
           </div>
-          <img src={assets.growth} alt="Growth step" />
+          {/* <div className="process-visual">
+            <div>
+              <strong>Built to improve</strong>
+              <span>Research, creative, launch, learn, and scale.</span>
+            </div>
+          </div> */}
         </section>
 
         <section className="why section">
-          <div className="why-image"><img src={assets.growth} alt="Growing business" /><div className="quote-bubble"><Quote /><strong>Trusted Us for A Long Time!</strong></div></div>
+          <div className="why-image">
+            <img src={assets.growth} alt="Growing business" />
+            <div className="quote-bubble">
+              <Quote />
+              <strong>Trusted Us for A Long Time!</strong>
+            </div>
+          </div>
           <div className="section-copy">
-            <span className="eyebrow dark">Why Choose Us?</span>
-            <h2>A dedicated partner <span>invested in your success</span></h2>
-            <p>We believe in building long-term, collaborative relationships with our clients. You don’t just hire us, you gain a dedicated partner invested in your success.</p>
-            <div className="mini-feature"><div><Target /></div><span><strong>Collaborative Partnership:</strong> We listen, understand your vision, and work hand-in-hand to craft solutions perfectly aligned with your aspirations.</span></div>
+            <span className="eyebrow dark">WHY CHOOSE MAAINT</span>
+            <h2>
+              Built for Growth. <span>Driven by Results.</span>
+            </h2>
+            <div className="why-points">
+              {[
+                [
+                  Lightbulb,
+                  "Strategic Thinking",
+                  "Every campaign begins with research, audience insights, and data-backed planning.",
+                ],
+                [
+                  Palette,
+                  "Creative Excellence",
+                  "We blend innovation and design to create memorable advertising experiences.",
+                ],
+                [
+                  MessagesSquare,
+                  "Transparent Communication",
+                  "Clear reporting and regular performance updates keep you informed at every stage.",
+                ],
+                [
+                  TrendingUp,
+                  "Performance-Focused Execution",
+                  "We focus on meaningful business outcomes including leads, sales, customer acquisition, and brand growth.",
+                ],
+                [
+                  SlidersHorizontal,
+                  "Adaptable Solutions",
+                  "Every business is different. Our strategies are customized to align with your objectives and market conditions.",
+                ],
+              ].map(([Icon, title, text]) => (
+                <div className="why-point" key={title}>
+                  <div>
+                    <Icon />
+                  </div>
+                  <span>
+                    <strong>{title}</strong>
+                    {text}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="partner-strip">
-          {partners.map(name => <span key={name}>{name}</span>)}
+        <section className="testimonials section">
+          <div className="section-heading">
+            <span className="eyebrow dark">TESTIMONIALS</span>
+            <h2>
+              What Our <span>Clients Say</span>
+            </h2>
+          </div>
+          <div className="testimonial-grid">
+            {[
+              [
+                "MAAINT transformed our advertising strategy and helped us generate consistent, high-quality leads.",
+                "Business Owner",
+              ],
+              [
+                "The team's creativity and professionalism exceeded our expectations from day one.",
+                "Marketing Director",
+              ],
+              [
+                "Their strategic approach helped us strengthen our brand and increase customer engagement.",
+                "Startup Founder",
+              ],
+            ].map(([quote, author]) => (
+              <article className="testimonial-card" key={author}>
+                <Quote />
+                <p>{quote}</p>
+                <strong>{author}</strong>
+              </article>
+            ))}
+          </div>
         </section>
+        {/* 
+        <section className="partner-strip">
+          {partners.map((name) => (
+            <span key={name}>{name}</span>
+          ))}
+        </section> */}
 
         <section className="contact-cta" id="contact">
-          <div>
+          <div className="cta-copy">
             <span className="eyebrow">Talk with our experts</span>
-            <h2>Get Answers to All Your Questions You Might Have</h2>
-            <p>Stop pondering, start exploring - your answers are closer than you think.</p>
+            <h2>Ready to Elevate Your Brand?</h2>
+            <p>
+              Partner with MAAINT and discover how strategic advertising can
+              help your business attract customers, increase revenue, and build
+              long-term market success. Let's create something remarkable
+              together.
+            </p>
+            <div className="cta-highlights">
+              <span>
+                <Target />
+                Campaign strategy
+              </span>
+              <span>
+                <TrendingUp />
+                Growth planning
+              </span>
+              <span>
+                <MessagesSquare />
+                Clear next steps
+              </span>
+            </div>
+            <div className="cta-actions">
+              <button className="button" onClick={() => setQuoteOpen(true)}>
+                Book Your Free Consultation Today
+                <ArrowRight size={17} />
+              </button>
+              <a href="mailto:hello@maaint.co">hello@maaint.co</a>
+            </div>
           </div>
-          <button className="button" onClick={() => setQuoteOpen(true)}>Get quote <ArrowRight size={17} /></button>
+          <div className="cta-panel">
+            <span>Free Consultation</span>
+            <strong>30 min</strong>
+            <p>
+              Review your brand goals, current marketing gaps, and the fastest
+              path to better results.
+            </p>
+          </div>
         </section>
       </main>
 
       <footer>
         <div className="footer-main">
-          <div><img className="footer-logo" src={assets.footerLogo} alt="Modern Advertising Agency" /><p>Transforming complex technology into clear business advantage.</p></div>
-          <div><h4>Contact</h4><a href="tel:18009820680"><Phone size={16} /> 1 800 982 0680</a><a href="mailto:care@pexario.com"><Mail size={16} /> care@pexario.com</a></div>
-          <div><h4>Quick links</h4>{nav.map(([label, id]) => <a key={id} href={`#${id}`}>{label}</a>)}</div>
-          <div><h4>Follow us</h4><div className="socials"><a href="#"><Facebook /></a><a href="#"><Instagram /></a><a href="#"><Linkedin /></a></div></div>
+          <div>
+            <img
+              className="footer-logo"
+              src={assets.footerLogo}
+              alt="Modern Advertising Agency"
+            />
+            <p className="footer-tagline">
+              Modern Advertising. Intelligent Strategy. Lasting Impact.
+            </p>
+            <p className="footer-services">
+              Brand Strategy &bull; Digital Advertising &bull; Creative Design
+              &bull; Social Media &bull; Content Production &bull; Growth
+              Marketing
+            </p>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <a href="mailto:hello@maaint.co">
+              <Mail size={16} /> hello@maaint.co
+            </a>
+            <a href="https://maaint.co">
+              <ArrowRight size={16} /> MAAINT.co
+            </a>
+          </div>
+          <div>
+            <h4>MAAINT Meaning</h4>
+            <p className="footer-meaning">
+              Modern Advertising And Innovation Network Team
+            </p>
+            <p>A premium agency identity with a unique and memorable name.</p>
+          </div>
+          <div>
+            <h4>Follow us</h4>
+            <div className="socials">
+              <a href="#">
+                <Facebook />
+              </a>
+              <a href="#">
+                <Instagram />
+              </a>
+              <a href="#">
+                <Linkedin />
+              </a>
+            </div>
+          </div>
         </div>
-        <div className="footer-bottom">Copyright © 2025, pexario.com All Rights Reserved.</div>
+        <div className="footer-bottom">
+          Copyright &copy; 2025, MAAINT.co All Rights Reserved.
+        </div>
       </footer>
 
-      <a className="scroll-top" href="#home"><ChevronUp /></a>
+      <a className="scroll-top" href="#home">
+        <ChevronUp />
+      </a>
 
-      {quoteOpen && <div className="modal-backdrop" onClick={() => setQuoteOpen(false)}>
-        <div className="modal" onClick={e => e.stopPropagation()}>
-          <button className="modal-close" onClick={() => setQuoteOpen(false)}><X /></button>
-          <span className="eyebrow dark">Let's talk</span>
-          <h2>Get Free Consultation!</h2>
-          <p>We are ready to answer right now! Sign up for a free consultation.</p>
-          <form onSubmit={e => { e.preventDefault(); setQuoteOpen(false) }}>
-            <input required placeholder="Your name" />
-            <input required type="email" placeholder="Email address" />
-            <textarea placeholder="Tell us about your project" rows="4" />
-            <button className="button">Send request <ArrowRight size={17} /></button>
-          </form>
+      {quoteOpen && (
+        <div className="modal-backdrop" onClick={() => setQuoteOpen(false)}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setQuoteOpen(false)}>
+              <X />
+            </button>
+            <span className="eyebrow dark">Let's talk</span>
+            <h2>Get Free Consultation!</h2>
+            <p>
+              We are ready to answer right now! Sign up for a free consultation.
+            </p>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setQuoteOpen(false);
+              }}
+            >
+              <input required placeholder="Your name" />
+              <input required type="email" placeholder="Email address" />
+              <textarea placeholder="Tell us about your project" rows="4" />
+              <button className="button">
+                Send request <ArrowRight size={17} />
+              </button>
+            </form>
+          </div>
         </div>
-      </div>}
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
