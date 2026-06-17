@@ -118,7 +118,81 @@ const plans = [
   },
 ];
 
-const partners = ["microsoft", "figma", "PINTEREST", "sketch", "slack"];
+const impactStats = [
+  ["300+", "Projects Delivered"],
+  ["150+", "Brands Supported"],
+  ["10+", "Industries Served"],
+];
+
+const processSteps = [
+  [
+    "Discover",
+    "We analyze your industry, audience, competition, and growth opportunities.",
+  ],
+  [
+    "Strategize",
+    "Our team develops a customized roadmap aligned with your business goals.",
+  ],
+  [
+    "Create",
+    "We design compelling campaigns, content, and brand assets that capture attention.",
+  ],
+  [
+    "Launch",
+    "Campaigns are deployed across carefully selected channels for maximum impact.",
+  ],
+  [
+    "Optimize",
+    "Continuous testing and performance monitoring help improve return on investment.",
+  ],
+  [
+    "Scale",
+    "Successful campaigns are expanded to unlock new growth opportunities.",
+  ],
+];
+
+const whyPoints = [
+  [
+    Lightbulb,
+    "Strategic Thinking",
+    "Every campaign begins with research, audience insights, and data-backed planning.",
+  ],
+  [
+    Palette,
+    "Creative Excellence",
+    "We blend innovation and design to create memorable advertising experiences.",
+  ],
+  [
+    MessagesSquare,
+    "Transparent Communication",
+    "Clear reporting and regular performance updates keep you informed at every stage.",
+  ],
+  [
+    TrendingUp,
+    "Performance-Focused Execution",
+    "We focus on meaningful business outcomes including leads, sales, customer acquisition, and brand growth.",
+  ],
+  [
+    SlidersHorizontal,
+    "Adaptable Solutions",
+    "Every business is different. Our strategies are customized to align with your objectives and market conditions.",
+  ],
+];
+
+const testimonials = [
+  [
+    "MAAINT transformed our advertising strategy and helped us generate consistent, high-quality leads.",
+    "Business Owner",
+  ],
+  [
+    "The team's creativity and professionalism exceeded our expectations from day one.",
+    "Marketing Director",
+  ],
+  [
+    "Their strategic approach helped us strengthen our brand and increase customer engagement.",
+    "Startup Founder",
+  ],
+];
 
 function Button({ children, light = false, href = "#contact" }) {
   return (
@@ -137,7 +211,12 @@ function App() {
     <>
       <header className="site-header">
         <a href="#home" className="logo">
-          <img src={assets.logo} alt="Modern Advertising Agency" />
+          <img
+            src={assets.logo}
+            alt="MAAINT Modern Advertising Agency"
+            width="499"
+            height="117"
+          />
         </a>
         <nav className={menuOpen ? "open" : ""}>
           {nav.map(([label, id]) => (
@@ -153,6 +232,7 @@ function App() {
           className="menu-button"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           {menuOpen ? <X /> : <Menu />}
         </button>
@@ -181,7 +261,11 @@ function App() {
           <div className="hero-visual">
             <div className="orbit orbit-one" />
             <div className="orbit orbit-two" />
-            <img src={assets.hero} alt="Pexario technology illustration" />
+            <img
+              src={assets.hero}
+              alt="MAAINT advertising strategy illustration"
+              fetchPriority="high"
+            />
             <div className="float-card card-one">
               <Target size={22} />
               <strong>Smart strategy</strong>
@@ -198,7 +282,12 @@ function App() {
         <section className="section split" id="about">
           <div className="image-stage">
             <div className="dots" />
-            <img src={assets.start} alt="ABOUT US" />
+            <img
+              src={assets.start}
+              alt="MAAINT agency planning"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div className="section-copy">
             <span className="eyebrow dark">ABOUT US</span>
@@ -248,7 +337,12 @@ function App() {
 
         <section className="impact">
           <div className="impact-image">
-            <img src={assets.vision} alt="Business technology impact" />
+            <img
+              src={assets.vision}
+              alt="Advertising campaign impact"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div className="impact-content">
             <span className="eyebrow">
@@ -257,11 +351,7 @@ function App() {
             <h2>Millions of Consumer Impressions Generated</h2>
 
             <div className="stats">
-              {[
-                ["300+", "Projects Delivered"],
-                ["150+", "Brands Supported"],
-                ["10+", " Industries Served"],
-              ].map(([number, label]) => (
+              {impactStats.map(([number, label]) => (
                 <div className="stat" key={label}>
                   <strong>
                     {number}
@@ -323,32 +413,7 @@ function App() {
               launches with confidence, and keeps improving after go-live.
             </p>
             <div className="process-grid">
-              {[
-                [
-                  "Discover",
-                  "We analyze your industry, audience, competition, and growth opportunities.",
-                ],
-                [
-                  "Strategize",
-                  "Our team develops a customized roadmap aligned with your business goals.",
-                ],
-                [
-                  "Create",
-                  "We design compelling campaigns, content, and brand assets that capture attention.",
-                ],
-                [
-                  "Launch",
-                  "Campaigns are deployed across carefully selected channels for maximum impact.",
-                ],
-                [
-                  "Optimize",
-                  "Continuous testing and performance monitoring help improve return on investment.",
-                ],
-                [
-                  "Scale",
-                  "Successful campaigns are expanded to unlock new growth opportunities.",
-                ],
-              ].map(([title, text], index) => (
+              {processSteps.map(([title, text], index) => (
                 <article className="process-step" key={title}>
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <h3>{title}</h3>
@@ -358,17 +423,16 @@ function App() {
             </div>
             <Button href="#contact">Start Your Campaign</Button>
           </div>
-          {/* <div className="process-visual">
-            <div>
-              <strong>Built to improve</strong>
-              <span>Research, creative, launch, learn, and scale.</span>
-            </div>
-          </div> */}
         </section>
 
         <section className="why section">
           <div className="why-image">
-            <img src={assets.growth} alt="Growing business" />
+            <img
+              src={assets.growth}
+              alt="Growth marketing results"
+              loading="lazy"
+              decoding="async"
+            />
             <div className="quote-bubble">
               <Quote />
               <strong>Trusted Us for A Long Time!</strong>
@@ -380,33 +444,7 @@ function App() {
               Built for Growth. <span>Driven by Results.</span>
             </h2>
             <div className="why-points">
-              {[
-                [
-                  Lightbulb,
-                  "Strategic Thinking",
-                  "Every campaign begins with research, audience insights, and data-backed planning.",
-                ],
-                [
-                  Palette,
-                  "Creative Excellence",
-                  "We blend innovation and design to create memorable advertising experiences.",
-                ],
-                [
-                  MessagesSquare,
-                  "Transparent Communication",
-                  "Clear reporting and regular performance updates keep you informed at every stage.",
-                ],
-                [
-                  TrendingUp,
-                  "Performance-Focused Execution",
-                  "We focus on meaningful business outcomes including leads, sales, customer acquisition, and brand growth.",
-                ],
-                [
-                  SlidersHorizontal,
-                  "Adaptable Solutions",
-                  "Every business is different. Our strategies are customized to align with your objectives and market conditions.",
-                ],
-              ].map(([Icon, title, text]) => (
+              {whyPoints.map(([Icon, title, text]) => (
                 <div className="why-point" key={title}>
                   <div>
                     <Icon />
@@ -429,20 +467,7 @@ function App() {
             </h2>
           </div>
           <div className="testimonial-grid">
-            {[
-              [
-                "MAAINT transformed our advertising strategy and helped us generate consistent, high-quality leads.",
-                "Business Owner",
-              ],
-              [
-                "The team's creativity and professionalism exceeded our expectations from day one.",
-                "Marketing Director",
-              ],
-              [
-                "Their strategic approach helped us strengthen our brand and increase customer engagement.",
-                "Startup Founder",
-              ],
-            ].map(([quote, author]) => (
+            {testimonials.map(([quote, author]) => (
               <article className="testimonial-card" key={author}>
                 <Quote />
                 <p>{quote}</p>
@@ -451,13 +476,6 @@ function App() {
             ))}
           </div>
         </section>
-        {/* 
-        <section className="partner-strip">
-          {partners.map((name) => (
-            <span key={name}>{name}</span>
-          ))}
-        </section> */}
-
         <section className="contact-cta" id="contact">
           <div className="cta-copy">
             <span className="eyebrow">Talk with our experts</span>
@@ -507,7 +525,11 @@ function App() {
             <img
               className="footer-logo"
               src={assets.footerLogo}
-              alt="Modern Advertising Agency"
+              alt="MAAINT Modern Advertising Agency"
+              width="499"
+              height="117"
+              loading="lazy"
+              decoding="async"
             />
             <p className="footer-tagline">
               Modern Advertising. Intelligent Strategy. Lasting Impact.
@@ -537,13 +559,13 @@ function App() {
           <div>
             <h4>Follow us</h4>
             <div className="socials">
-              <a href="#">
+              <a href="#" aria-label="Facebook">
                 <Facebook />
               </a>
-              <a href="#">
+              <a href="#" aria-label="Instagram">
                 <Instagram />
               </a>
-              <a href="#">
+              <a href="#" aria-label="LinkedIn">
                 <Linkedin />
               </a>
             </div>
