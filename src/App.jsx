@@ -42,74 +42,138 @@ const legalPages = {
   privacy: {
     title: "Privacy Policy",
     intro:
-      "This Privacy Policy explains how MAAINT.co collects, uses, and protects information shared with us through our website, consultation forms, and client communications.",
+      'Maa International LLC ("MAA International," "Company," "we," "us," or "our") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit https://maaint.co and use our marketing, automation, SMS, advertising, and related services.',
     sections: [
       [
-        "Information We Collect",
-        "We may collect your name, email address, project details, business information, and any message you choose to send through our forms or direct email.",
+        "1. Introduction",
+        'Maa International LLC ("MAA International," "Company," "we," "us," or "our") respects your privacy and is committed to protecting your personal information.\n\nThis Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit https://maaint.co (the "Website") and use our marketing, automation, SMS, advertising, and related services (the "Services").\n\nBy using our Website or Services, you agree to this Privacy Policy.',
       ],
       [
-        "How We Use Information",
-        "We use your information to respond to inquiries, provide consultations, prepare proposals, deliver marketing services, improve our website, and communicate about relevant services.",
+        "2. Information We Collect",
+        "A. Information You Provide\n\nWe may collect:\n\n* Full name\n* Email address\n* Phone number\n* Business name\n* Billing information\n* Information submitted through forms\n* SMS opt-in records\n* Customer communications\n\nB. Automatically Collected Information\n\n* IP address\n* Browser type\n* Device information\n* Website activity and usage data\n* Cookies and tracking technologies",
       ],
       [
-        "Marketing And Analytics",
-        "We may review website usage and campaign performance data to improve user experience and service quality. We do not sell personal information.",
+        "3. How We Use Your Information",
+        "We use your information to:\n\n* Provide and deliver our Services\n* Send SMS and email communications (with consent)\n* Respond to inquiries\n* Process transactions\n* Improve our Website and Services\n* Maintain compliance records\n* Prevent fraud or abuse\n* Comply with legal obligations",
       ],
       [
-        "Information Sharing",
-        "We only share information with trusted service providers when needed to operate our website, respond to requests, or deliver agreed services. We may also disclose information if required by law.",
+        "4. SMS Communications & Mobile Data Policy",
+        "If you provide your phone number and opt in to receive SMS communications:\n\n* You provide express written consent to receive recurring text messages from Maa International LLC.\n* Message frequency may vary.\n* Message and data rates may apply.\n* Consent is not a condition of purchase.\n* You may opt out at any time by replying STOP.\n* For assistance, reply HELP or contact care@maaint.co.\n\nMobile Information Sharing Statement\n\nWe do not sell, rent, share, or disclose mobile phone numbers or SMS opt-in data to third parties or affiliates for marketing or promotional purposes.\n\nMobile information is only shared with trusted service providers necessary to deliver SMS services, such as messaging platforms and carriers.",
       ],
       [
-        "Data Security",
-        "We use reasonable administrative and technical safeguards to protect information, but no online transmission or storage method can be guaranteed to be completely secure.",
+        "5. Cookies & Tracking",
+        "We use cookies and similar technologies to:\n\n* Analyze website traffic\n* Improve user experience\n* Track marketing performance\n\nYou may disable cookies in your browser settings.",
       ],
       [
-        "Your Choices",
-        "You may contact us to request access, correction, or deletion of your personal information where applicable.",
+        "6. Data Retention",
+        "We retain personal data only as long as necessary to:\n\n* Provide services\n* Maintain SMS consent records\n* Comply with legal requirements\n* Resolve disputes",
       ],
       [
-        "Contact",
-        "For privacy questions, contact us at hello@maaint.co.",
+        "7. Data Security",
+        "We implement industry-standard administrative, technical, and physical safeguards to protect your data.\n\nHowever, no method of transmission over the Internet is 100% secure, and we cannot guarantee absolute security.",
+      ],
+      [
+        "8. Your Rights (Including California Residents - CCPA)",
+        "Depending on your location, you may have the right to:\n\n* Request access to your personal data\n* Request correction or deletion\n* Request disclosure of collected data categories\n* Withdraw consent\n\nWe do not sell personal data.\n\nTo exercise your rights, contact:\n\nEmail: care@maaint.co",
+      ],
+      [
+        "9. Children's Privacy",
+        "Our Services are intended for individuals 18 years of age or older.\n\nWe do not knowingly collect personal information from individuals under 18 years old.",
+      ],
+      [
+        "10. International Users",
+        "Our Services are operated in the United States. If you access the Website from outside the United States, you acknowledge and consent to the transfer, storage, and processing of your information in the United States.",
+      ],
+      [
+        "11. Updates to This Policy",
+        "We may update this Privacy Policy from time to time. Any changes will be posted on this page with a revised Effective Date.\n\nYour continued use of the Website and Services after changes are posted constitutes your acceptance of the revised Policy.",
+      ],
+      [
+        "12. Contact Information",
+        "Maa International LLC\nUnited States\n\nEmail: care@maaint.co\nWebsite: https://maaint.co",
       ],
     ],
   },
   terms: {
-    title: "Terms & Conditions",
+    title: "Terms of Service",
     intro:
-      "These Terms & Conditions outline the rules for using MAAINT.co and engaging with MAAINT for advertising, creative, and marketing services.",
+      "By accessing or using our Website or Services, you agree to be bound by these Terms of Service. If you do not agree to these Terms, please do not use our Website or Services.",
     sections: [
       [
-        "Use Of Website",
-        "By using this website, you agree to use it lawfully and not attempt to disrupt, copy, misuse, or interfere with its content, forms, or functionality.",
+        "1. Acceptance of Terms",
+        "By accessing or using our Website or Services, you agree to be bound by these Terms of Service.\n\nIf you do not agree to these Terms, please do not use our Website or Services.",
       ],
       [
-        "Service Information",
-        "Website content, pricing, packages, and service descriptions are provided for general information and may change based on project scope, market requirements, and client needs.",
+        "2. Description of Services",
+        "Maa International LLC provides digital marketing, advertising, branding, website development, automation, SMS marketing, lead generation, consulting, and related business growth services.\n\nService details, pricing, timelines, and deliverables are outlined in client agreements, proposals, or invoices.",
       ],
       [
-        "Proposals And Payments",
-        "Final deliverables, timelines, fees, payment terms, and responsibilities are confirmed in a separate proposal, invoice, agreement, or written communication.",
+        "3. User Responsibilities",
+        "You agree to:\n\n* Provide accurate and complete information\n* Use our Services in a lawful manner\n* Comply with TCPA, CTIA, CAN-SPAM, and all applicable federal, state, and local laws\n* Not misuse, interfere with, or disrupt our systems, networks, or Services\n* Maintain the confidentiality of any account credentials provided",
       ],
       [
-        "Client Responsibilities",
-        "Clients are responsible for providing accurate information, timely feedback, brand assets, approvals, and any permissions needed to complete marketing work.",
+        "SMS Terms & Conditions",
+        "This section governs participation in Maa International LLC's SMS messaging program.",
       ],
       [
-        "Intellectual Property",
-        "MAAINT retains ownership of its pre-existing methods, templates, processes, and internal materials. Client deliverable ownership is defined by the approved project agreement.",
+        "4. SMS Program Description",
+        "Maa International LLC may send marketing and informational text messages, including but not limited to:\n\n* Promotional offers\n* Service announcements\n* Appointment reminders\n* Account notifications\n* Customer support communications\n* Project updates and business-related notifications\n\nMessage frequency may vary based on customer interaction and service requirements.",
       ],
       [
-        "No Guaranteed Results",
-        "We work to improve marketing performance, but advertising results can vary based on budget, audience, competition, platform changes, offer quality, and market conditions.",
+        "5. Opt-In Consent",
+        "By submitting your phone number and selecting the consent checkbox on our Website, forms, landing pages, or other communication channels, you expressly agree to receive SMS messages from Maa International LLC.\n\nConsent is not a condition of purchase.\n\nWe maintain records of SMS consent as required by applicable laws and regulations.",
       ],
       [
-        "Limitation Of Liability",
-        "To the fullest extent permitted by law, MAAINT is not liable for indirect, incidental, or consequential damages related to website use or services.",
+        "6. Opt-Out Instructions",
+        "You may opt out of SMS communications at any time by replying:\n\nSTOP - To unsubscribe\nHELP - For assistance\n\nAfter opting out, you may receive a final confirmation message, and no further SMS messages will be sent unless you provide new consent.",
       ],
       [
-        "Contact",
-        "For questions about these terms, contact us at hello@maaint.co.",
+        "7. Message & Data Rates",
+        "Message and data rates may apply depending on your mobile carrier and service plan.\n\nCustomers are responsible for any charges imposed by their wireless provider.",
+      ],
+      [
+        "8. Carrier Liability Disclaimer",
+        "Wireless carriers are not liable for delayed, failed, or undelivered messages.\n\nDelivery is subject to effective transmission by your mobile carrier and network availability.",
+      ],
+      [
+        "9. Age Restriction",
+        "You must be at least eighteen (18) years old to use our SMS services or engage our Services independently.",
+      ],
+      [
+        "10. Payment Terms",
+        "* Fees and payment schedules are outlined in client agreements, proposals, or invoices.\n* Late payments may result in suspension or termination of Services.\n* Fees are non-refundable unless otherwise specified in writing.\n* Clients remain responsible for all outstanding balances for services rendered.",
+      ],
+      [
+        "11. Intellectual Property",
+        "All Website content, branding, designs, graphics, systems, software, methodologies, and materials created by Maa International LLC remain the property of Maa International LLC unless otherwise agreed in writing.\n\nClients retain ownership of their pre-existing trademarks, logos, brand assets, and proprietary materials.",
+      ],
+      [
+        "12. Disclaimer of Warranties",
+        'All Services are provided on an "as is" and "as available" basis without warranties of any kind, whether express or implied.\n\nMaa International LLC does not guarantee specific marketing performance, rankings, lead volume, revenue growth, or return on investment (ROI).',
+      ],
+      [
+        "13. Limitation of Liability",
+        "To the fullest extent permitted by law:\n\n* Maa International LLC shall not be liable for any indirect, incidental, consequential, special, or punitive damages.\n* Total liability arising from any claim shall not exceed the total amount paid by the client to Maa International LLC during the twelve (12) months preceding the claim.",
+      ],
+      [
+        "14. Indemnification",
+        "You agree to indemnify, defend, and hold harmless Maa International LLC, its officers, employees, contractors, and affiliates from any claims, damages, liabilities, losses, or expenses arising from:\n\n* Your misuse of SMS services\n* Violations of advertising, telemarketing, privacy, or consumer protection laws\n* Unauthorized messaging activities\n* Breach of these Terms",
+      ],
+      [
+        "15. Termination",
+        "Maa International LLC reserves the right to suspend or terminate Services immediately if:\n\n* You violate these Terms\n* Required payments become overdue\n* Fraudulent or unlawful activity is suspected\n* Termination is required by law or regulatory authorities",
+      ],
+      [
+        "16. Governing Law",
+        "These Terms shall be governed by and interpreted under the laws of the United States and the Commonwealth of Virginia, without regard to conflict of law principles.\n\nAny disputes arising under these Terms shall be resolved exclusively in the state or federal courts located in Alexandria, Virginia.",
+      ],
+      [
+        "17. Updates to Terms",
+        "Maa International LLC may modify or update these Terms at any time.\n\nUpdated versions will be posted on this page with a revised effective date. Continued use of the Website or Services after updates constitutes acceptance of the revised Terms.",
+      ],
+      [
+        "18. Contact Information",
+        "Maa International LLC\nUnited States\n\nEmail: care@maaint.co\nWebsite: www.maaint.co",
       ],
     ],
   },

@@ -44,7 +44,7 @@
 .legal-content{max-width:900px;margin:auto;padding:80px 24px 100px}
 .legal-content article{border-bottom:1px solid #e5eef0;padding:0 0 28px;margin-bottom:28px}
 .legal-content h2{font-size:24px;letter-spacing:0;margin-bottom:12px}
-.legal-content p{font-size:15px}
+.legal-content p{font-size:15px;white-space:pre-line}
 .legal-note{background:var(--light);padding:22px;margin:32px 0;color:#516576}
 
 .contact-cta{background:var(--navy)!important;color:#fff;position:relative;overflow:hidden;display:grid!important;grid-template-columns:minmax(0,1fr) 330px;align-items:center}
