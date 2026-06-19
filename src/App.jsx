@@ -38,6 +38,12 @@ const nav = [
   ["Plans", "plans"],
 ];
 
+const contactMethods = [
+  ["Email", "hellow@maaint.co", "mailto:hellow@maaint.co"],
+  ["Website", "MAAINT.co", "https://maaint.co"],
+  ["Response Time", "Within 1 business day", "#contact"],
+];
+
 const legalPages = {
   privacy: {
     title: "Privacy Policy",
@@ -58,7 +64,7 @@ const legalPages = {
       ],
       [
         "4. SMS Communications & Mobile Data Policy",
-        "If you provide your phone number and opt in to receive SMS communications:\n\n* You provide express written consent to receive recurring text messages from Maa International LLC.\n* Message frequency may vary.\n* Message and data rates may apply.\n* Consent is not a condition of purchase.\n* You may opt out at any time by replying STOP.\n* For assistance, reply HELP or contact care@maaint.co.\n\nMobile Information Sharing Statement\n\nWe do not sell, rent, share, or disclose mobile phone numbers or SMS opt-in data to third parties or affiliates for marketing or promotional purposes.\n\nMobile information is only shared with trusted service providers necessary to deliver SMS services, such as messaging platforms and carriers.",
+        "If you provide your phone number and opt in to receive SMS communications:\n\n* You provide express written consent to receive recurring text messages from Maa International LLC.\n* Message frequency may vary.\n* Message and data rates may apply.\n* Consent is not a condition of purchase.\n* You may opt out at any time by replying STOP.\n* For assistance, reply HELP or contact hellow@maaint.co.\n\nMobile Information Sharing Statement\n\nWe do not sell, rent, share, or disclose mobile phone numbers or SMS opt-in data to third parties or affiliates for marketing or promotional purposes.\n\nMobile information is only shared with trusted service providers necessary to deliver SMS services, such as messaging platforms and carriers.",
       ],
       [
         "5. Cookies & Tracking",
@@ -74,7 +80,7 @@ const legalPages = {
       ],
       [
         "8. Your Rights (Including California Residents - CCPA)",
-        "Depending on your location, you may have the right to:\n\n* Request access to your personal data\n* Request correction or deletion\n* Request disclosure of collected data categories\n* Withdraw consent\n\nWe do not sell personal data.\n\nTo exercise your rights, contact:\n\nEmail: care@maaint.co",
+        "Depending on your location, you may have the right to:\n\n* Request access to your personal data\n* Request correction or deletion\n* Request disclosure of collected data categories\n* Withdraw consent\n\nWe do not sell personal data.\n\nTo exercise your rights, contact:\n\nEmail: hellow@maaint.co",
       ],
       [
         "9. Children's Privacy",
@@ -90,7 +96,7 @@ const legalPages = {
       ],
       [
         "12. Contact Information",
-        "Maa International LLC\nUnited States\n\nEmail: care@maaint.co\nWebsite: https://maaint.co",
+        "Maa International LLC\nUnited States\n\nEmail: hellow@maaint.co\nWebsite: https://maaint.co",
       ],
     ],
   },
@@ -173,7 +179,7 @@ const legalPages = {
       ],
       [
         "18. Contact Information",
-        "Maa International LLC\nUnited States\n\nEmail: care@maaint.co\nWebsite: www.maaint.co",
+        "Maa International LLC\nUnited States\n\nEmail: hellow@maaint.co\nWebsite: www.maaint.co",
       ],
     ],
   },
@@ -377,13 +383,121 @@ function LegalPage({ page, onBack }) {
   );
 }
 
+function ContactPage({ onBack, onSubmit }) {
+  return (
+    <main className="contact-page">
+      <section className="contact-page-hero">
+        <div>
+          <span className="eyebrow">CONTACT US</span>
+          <h1>
+            Let's Build Your Next <span>Growth Campaign</span>
+          </h1>
+          <p>
+            Tell us about your goals, current marketing challenges, and the
+            services you need. Our team will review your request and respond
+            with clear next steps.
+          </p>
+        </div>
+        <div className="contact-info-panel">
+          {contactMethods.map(([label, value, href]) => (
+            <a key={label} href={href}>
+              <span>{label}</span>
+              <strong>{value}</strong>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="contact-page-body">
+        <form className="contact-form" onSubmit={onSubmit}>
+          <div className="form-row">
+            <input name="name" required placeholder="Your name" />
+            <input
+              name="email"
+              required
+              type="email"
+              placeholder="Email address"
+            />
+          </div>
+          <div className="form-row">
+            <input name="phone" placeholder="Phone number" />
+            <input name="business" placeholder="Business name" />
+          </div>
+          <select name="service" defaultValue="">
+            <option value="" disabled>
+              Select a service
+            </option>
+            <option>Brand Strategy</option>
+            <option>Digital Advertising</option>
+            <option>Creative Design</option>
+            <option>Social Media Marketing</option>
+            <option>Website & Landing Page Development</option>
+            <option>Marketing Automation</option>
+            <option>Full-Service Marketing</option>
+          </select>
+          <textarea
+            name="message"
+            required
+            placeholder="Tell us about your project"
+            rows="6"
+          />
+          <label className="sms-consent">
+            <input type="checkbox" name="marketingSmsConsent" value="Yes" />
+            By checking this box, you agree to receive recurring automated
+            marketing and promotional text messages from Maa International LLC
+            at the phone number provided. Message frequency varies (2-4 messages
+            per month). Message and data rates may apply. Reply STOP to opt out.
+            Reply HELP for help. Consent is not a condition of purchase.
+          </label>
+          <label className="sms-consent">
+            <input type="checkbox" name="serviceSmsConsent" value="Yes" />
+            By checking this box, you agree to receive non-marketing text
+            messages from Maa International LLC related to account
+            notifications, service updates, and appointment reminders. Message
+            frequency varies (up to 2 messages per month). Message and data
+            rates may apply. Reply STOP to opt out. Reply HELP for help.
+          </label>
+          <button className="button" type="submit">
+            Send request <ArrowRight size={17} />
+          </button>
+        </form>
+
+        <aside className="contact-aside">
+          <span className="eyebrow dark">What happens next</span>
+          <h2>Simple, clear, and fast.</h2>
+          <ul>
+            <li>
+              <Check /> We review your goals and business needs.
+            </li>
+            <li>
+              <Check /> We recommend the best marketing path.
+            </li>
+            <li>
+              <Check /> You receive clear next steps and pricing guidance.
+            </li>
+          </ul>
+          <button
+            className="button button-light"
+            type="button"
+            onClick={onBack}
+          >
+            Back to Home <ArrowRight size={17} />
+          </button>
+        </aside>
+      </section>
+    </main>
+  );
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
   const [legalPage, setLegalPage] = useState(null);
+  const [contactPageOpen, setContactPageOpen] = useState(false);
 
   function openHome() {
     setLegalPage(null);
+    setContactPageOpen(false);
     setMenuOpen(false);
     window.requestAnimationFrame(() => {
       window.location.hash = "home";
@@ -392,6 +506,14 @@ function App() {
 
   function openLegalPage(page) {
     setLegalPage(page);
+    setContactPageOpen(false);
+    setMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function openContactPage() {
+    setLegalPage(null);
+    setContactPageOpen(true);
     setMenuOpen(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -406,13 +528,20 @@ function App() {
     const formData = new FormData(e.currentTarget);
     const name = formData.get("name");
     const email = formData.get("email");
+    const phone = formData.get("phone");
+    const business = formData.get("business");
+    const service = formData.get("service");
+    const marketingSmsConsent = formData.get("marketingSmsConsent") || "No";
+    const serviceSmsConsent = formData.get("serviceSmsConsent") || "No";
     const message = formData.get("message") || "No project details provided.";
-    const subject = encodeURIComponent("New consultation request from MAAINT.co");
+    const subject = encodeURIComponent(
+      "New consultation request from MAAINT.co",
+    );
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nProject details:\n${message}`
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\nBusiness: ${business || "Not provided"}\nService: ${service || "Not selected"}\nMarketing SMS Consent: ${marketingSmsConsent}\nService SMS Consent: ${serviceSmsConsent}\n\nProject details:\n${message}`,
     );
 
-    window.location.href = `mailto:hello@maaint.co?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hellow@maaint.co?subject=${subject}&body=${body}`;
     setQuoteOpen(false);
   }
 
@@ -434,6 +563,7 @@ function App() {
               href={`#${id}`}
               onClick={() => {
                 setLegalPage(null);
+                setContactPageOpen(false);
                 setMenuOpen(false);
               }}
             >
@@ -447,8 +577,8 @@ function App() {
             Terms
           </button>
         </nav>
-        <button className="quote-button" onClick={openConsultationForm}>
-          Get quote <ArrowRight size={16} />
+        <button className="quote-button" onClick={openContactPage}>
+          Contact Us <ArrowRight size={16} />
         </button>
         <button
           className="menu-button"
@@ -460,301 +590,307 @@ function App() {
         </button>
       </header>
 
-      {legalPage ? (
+      {contactPageOpen ? (
+        <ContactPage onBack={openHome} onSubmit={handleConsultationSubmit} />
+      ) : legalPage ? (
         <LegalPage page={legalPages[legalPage]} onBack={openHome} />
       ) : (
-      <main>
-        <section className="hero" id="home">
-          <div className="hero-glow" />
-          <div className="hero-content">
-            <span className="eyebrow">
-              Creative Campaigns. Smarter Strategy. Measurable Growth.
-            </span>
-            <h1>
-              Advertising That <span>Moves Brands Forward</span>
-            </h1>
-            <p>
-              At MAAINT, we help ambitious businesses attract attention, build
-              meaningful customer relationships, and accelerate growth through
-              innovative advertising, branding, and digital marketing solutions.
-              Whether you're launching a new brand, scaling an existing
-              business, or entering a competitive market, our team creates
-              advertising strategies designed to deliver real business results.
-            </p>
-            <Button onClick={openConsultationForm}>
-              Let's Build Your Next Growth Campaign
-            </Button>
-          </div>
-          <div className="hero-visual">
-            <div className="orbit orbit-one" />
-            <div className="orbit orbit-two" />
-            <img
-              src={assets.hero}
-              alt="MAAINT advertising strategy illustration"
-              fetchPriority="high"
-            />
-            <div className="float-card card-one">
-              <Target size={22} />
-              <strong>Smart strategy</strong>
-              <span>Built for growth</span>
+        <main>
+          <section className="hero" id="home">
+            <div className="hero-glow" />
+            <div className="hero-content">
+              <span className="eyebrow">
+                Creative Campaigns. Smarter Strategy. Measurable Growth.
+              </span>
+              <h1>
+                Advertising That <span>Moves Brands Forward</span>
+              </h1>
+              <p>
+                At MAAINT, we help ambitious businesses attract attention, build
+                meaningful customer relationships, and accelerate growth through
+                innovative advertising, branding, and digital marketing
+                solutions. Whether you're launching a new brand, scaling an
+                existing business, or entering a competitive market, our team
+                creates advertising strategies designed to deliver real business
+                results.
+              </p>
+              <Button onClick={openConsultationForm}>
+                Let's Build Your Next Growth Campaign
+              </Button>
             </div>
-            <div className="float-card card-two">
-              <ShieldCheck size={22} />
-              <strong>Secure systems</strong>
-              <span>Always protected</span>
+            <div className="hero-visual">
+              <div className="orbit orbit-one" />
+              <div className="orbit orbit-two" />
+              <img
+                src={assets.hero}
+                alt="MAAINT advertising strategy illustration"
+                fetchPriority="high"
+              />
+              <div className="float-card card-one">
+                <Target size={22} />
+                <strong>Smart strategy</strong>
+                <span>Built for growth</span>
+              </div>
+              <div className="float-card card-two">
+                <ShieldCheck size={22} />
+                <strong>Secure systems</strong>
+                <span>Always protected</span>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="section split" id="about">
-          <div className="image-stage">
-            <div className="dots" />
-            <img
-              src={assets.start}
-              alt="MAAINT agency planning"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <div className="section-copy">
-            <span className="eyebrow dark">ABOUT US</span>
-            <h2>
-              The Modern Advertising Agency{" "}
-              <span>Built for Today's Brands</span>
-            </h2>
-            <p>
-              MAAINT is a forward-thinking advertising agency that combines
-              creativity, market intelligence, and performance marketing to help
-              brands thrive in a rapidly evolving digital landscape. We believe
-              successful advertising goes beyond visibility. It requires
-              strategy, compelling storytelling, audience understanding, and
-              continuous optimization. Our team works closely with businesses to
-              create campaigns that not only capture attention but also inspire
-              action. From startups to established enterprises, we help brands
-              build stronger market presence and sustainable growth.
-            </p>
-            <Button onClick={openConsultationForm}>About us</Button>
-          </div>
-        </section>
-
-        <section className="services section" id="services">
-          <div className="section-heading">
-            <span className="eyebrow dark">OUR SERVICES</span>
-            <h2>
-              Comprehensive Advertising Solutions
-              <span> Under One Roof</span>
-            </h2>
-          </div>
-          <div className="feature-grid">
-            {features.map(({ icon: Icon, title, text }, index) => (
-              <article className="feature-card" key={title}>
-                <div className="feature-number">0{index + 1}</div>
-                <div className="icon-box">
-                  <Icon />
-                </div>
-                <h3>{title}</h3>
-                <p>{text}</p>
-                <a
-                  href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    openConsultationForm();
-                  }}
-                >
-                  Learn more <ArrowRight size={16} />
-                </a>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="impact">
-          <div className="impact-image">
-            <img
-              src={assets.vision}
-              alt="Advertising campaign impact"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <div className="impact-content">
-            <span className="eyebrow">
-              Helping Brands Create Meaningful Impact
-            </span>
-            <h2>Millions of Consumer Impressions Generated</h2>
-
-            <div className="stats">
-              {impactStats.map(([number, label]) => (
-                <div className="stat" key={label}>
-                  <strong>
-                    {number}
-                    <span>+</span>
-                  </strong>
-                  <small>{label}</small>
-                </div>
-              ))}
+          <section className="section split" id="about">
+            <div className="image-stage">
+              <div className="dots" />
+              <img
+                src={assets.start}
+                alt="MAAINT agency planning"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
-          </div>
-        </section>
+            <div className="section-copy">
+              <span className="eyebrow dark">ABOUT US</span>
+              <h2>
+                The Modern Advertising Agency{" "}
+                <span>Built for Today's Brands</span>
+              </h2>
+              <p>
+                MAAINT is a forward-thinking advertising agency that combines
+                creativity, market intelligence, and performance marketing to
+                help brands thrive in a rapidly evolving digital landscape. We
+                believe successful advertising goes beyond visibility. It
+                requires strategy, compelling storytelling, audience
+                understanding, and continuous optimization. Our team works
+                closely with businesses to create campaigns that not only
+                capture attention but also inspire action. From startups to
+                established enterprises, we help brands build stronger market
+                presence and sustainable growth.
+              </p>
+              <Button onClick={openConsultationForm}>About us</Button>
+            </div>
+          </section>
 
-        <section className="section pricing" id="plans">
-          <div className="section-heading">
-            <span className="eyebrow dark">Choose Your</span>
-            <h2>
-              Marketing <span>Pricing Plans</span>
-            </h2>
-            <p>
-              Flexible packages for brand strategy, digital advertising,
-              creative design, social media, content production, and growth
-              marketing.
-            </p>
-          </div>
-          <div className="pricing-grid">
-            {plans.map((plan) => (
-              <article
-                className={`price-card ${plan.featured ? "featured" : ""}`}
-                key={plan.name}
-              >
-                {plan.featured && <div className="popular">Most popular</div>}
-                <h3>{plan.name}</h3>
-                <div className="price-label">Starting from</div>
-                <div className="price">
-                  <sup>$</sup>
-                  {plan.price}
-                  <small>/ month</small>
-                </div>
-                <ul>
-                  {plan.benefits.map((benefit) => (
-                    <li key={benefit}>
-                      <Check size={17} />
-                      {benefit}
-                    </li>
-                  ))}
-                </ul>
-                <Button light={!plan.featured} onClick={openConsultationForm}>
-                  Get Started
-                </Button>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="next-step process-section">
-          <div className="next-copy">
-            <span className="eyebrow">OUR PROCESS</span>
-            <h2>
-              How We <span>Deliver Results</span>
-            </h2>
-            <p>
-              A focused workflow that turns insight into creative campaigns,
-              launches with confidence, and keeps improving after go-live.
-            </p>
-            <div className="process-grid">
-              {processSteps.map(([title, text], index) => (
-                <article className="process-step" key={title}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
+          <section className="services section" id="services">
+            <div className="section-heading">
+              <span className="eyebrow dark">OUR SERVICES</span>
+              <h2>
+                Comprehensive Advertising Solutions
+                <span> Under One Roof</span>
+              </h2>
+            </div>
+            <div className="feature-grid">
+              {features.map(({ icon: Icon, title, text }, index) => (
+                <article className="feature-card" key={title}>
+                  <div className="feature-number">0{index + 1}</div>
+                  <div className="icon-box">
+                    <Icon />
+                  </div>
                   <h3>{title}</h3>
                   <p>{text}</p>
+                  <a
+                    href="#contact"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openConsultationForm();
+                    }}
+                  >
+                    Learn more <ArrowRight size={16} />
+                  </a>
                 </article>
               ))}
             </div>
-            <Button onClick={openConsultationForm}>Start Your Campaign</Button>
-          </div>
-        </section>
+          </section>
 
-        <section className="why section">
-          <div className="why-image">
-            <img
-              src={assets.growth}
-              alt="Growth marketing results"
-              loading="lazy"
-              decoding="async"
-            />
-            <div className="quote-bubble">
-              <Quote />
-              <strong>Trusted Us for A Long Time!</strong>
+          <section className="impact">
+            <div className="impact-image">
+              <img
+                src={assets.vision}
+                alt="Advertising campaign impact"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
-          </div>
-          <div className="section-copy">
-            <span className="eyebrow dark">WHY CHOOSE MAAINT</span>
-            <h2>
-              Built for Growth. <span>Driven by Results.</span>
-            </h2>
-            <div className="why-points">
-              {whyPoints.map(([Icon, title, text]) => (
-                <div className="why-point" key={title}>
-                  <div>
-                    <Icon />
+            <div className="impact-content">
+              <span className="eyebrow">
+                Helping Brands Create Meaningful Impact
+              </span>
+              <h2>Millions of Consumer Impressions Generated</h2>
+
+              <div className="stats">
+                {impactStats.map(([number, label]) => (
+                  <div className="stat" key={label}>
+                    <strong>
+                      {number}
+                      <span>+</span>
+                    </strong>
+                    <small>{label}</small>
                   </div>
-                  <span>
-                    <strong>{title}</strong>
-                    {text}
-                  </span>
-                </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="section pricing" id="plans">
+            <div className="section-heading">
+              <span className="eyebrow dark">Choose Your</span>
+              <h2>
+                Marketing <span>Pricing Plans</span>
+              </h2>
+              <p>
+                Flexible packages for brand strategy, digital advertising,
+                creative design, social media, content production, and growth
+                marketing.
+              </p>
+            </div>
+            <div className="pricing-grid">
+              {plans.map((plan) => (
+                <article
+                  className={`price-card ${plan.featured ? "featured" : ""}`}
+                  key={plan.name}
+                >
+                  {plan.featured && <div className="popular">Most popular</div>}
+                  <h3>{plan.name}</h3>
+                  <div className="price-label">Starting from</div>
+                  <div className="price">
+                    <sup>$</sup>
+                    {plan.price}
+                    <small>/ month</small>
+                  </div>
+                  <ul>
+                    {plan.benefits.map((benefit) => (
+                      <li key={benefit}>
+                        <Check size={17} />
+                        {benefit}
+                      </li>
+                    ))}
+                  </ul>
+                  <Button light={!plan.featured} onClick={openConsultationForm}>
+                    Get Started
+                  </Button>
+                </article>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="testimonials section">
-          <div className="section-heading">
-            <span className="eyebrow dark">TESTIMONIALS</span>
-            <h2>
-              What Our <span>Clients Say</span>
-            </h2>
-          </div>
-          <div className="testimonial-grid">
-            {testimonials.map(([quote, author]) => (
-              <article className="testimonial-card" key={author}>
+          <section className="next-step process-section">
+            <div className="next-copy">
+              <span className="eyebrow">OUR PROCESS</span>
+              <h2>
+                How We <span>Deliver Results</span>
+              </h2>
+              <p>
+                A focused workflow that turns insight into creative campaigns,
+                launches with confidence, and keeps improving after go-live.
+              </p>
+              <div className="process-grid">
+                {processSteps.map(([title, text], index) => (
+                  <article className="process-step" key={title}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <h3>{title}</h3>
+                    <p>{text}</p>
+                  </article>
+                ))}
+              </div>
+              <Button onClick={openConsultationForm}>
+                Start Your Campaign
+              </Button>
+            </div>
+          </section>
+
+          <section className="why section">
+            <div className="why-image">
+              <img
+                src={assets.growth}
+                alt="Growth marketing results"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="quote-bubble">
                 <Quote />
-                <p>{quote}</p>
-                <strong>{author}</strong>
-              </article>
-            ))}
-          </div>
-        </section>
-        <section className="contact-cta" id="contact">
-          <div className="cta-copy">
-            <span className="eyebrow">Talk with our experts</span>
-            <h2>Ready to Elevate Your Brand?</h2>
-            <p>
-              Partner with MAAINT and discover how strategic advertising can
-              help your business attract customers, increase revenue, and build
-              long-term market success. Let's create something remarkable
-              together.
-            </p>
-            <div className="cta-highlights">
-              <span>
-                <Target />
-                Campaign strategy
-              </span>
-              <span>
-                <TrendingUp />
-                Growth planning
-              </span>
-              <span>
-                <MessagesSquare />
-                Clear next steps
-              </span>
+                <strong>Trusted Us for A Long Time!</strong>
+              </div>
             </div>
-            <div className="cta-actions">
-              <button className="button" onClick={openConsultationForm}>
-                Book Your Free Consultation Today
-                <ArrowRight size={17} />
-              </button>
-              <a href="mailto:hello@maaint.co">hello@maaint.co</a>
+            <div className="section-copy">
+              <span className="eyebrow dark">WHY CHOOSE MAAINT</span>
+              <h2>
+                Built for Growth. <span>Driven by Results.</span>
+              </h2>
+              <div className="why-points">
+                {whyPoints.map(([Icon, title, text]) => (
+                  <div className="why-point" key={title}>
+                    <div>
+                      <Icon />
+                    </div>
+                    <span>
+                      <strong>{title}</strong>
+                      {text}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="cta-panel">
-            <span>Free Consultation</span>
-            <strong>30 min</strong>
-            <p>
-              Review your brand goals, current marketing gaps, and the fastest
-              path to better results.
-            </p>
-          </div>
-        </section>
-      </main>
+          </section>
+
+          <section className="testimonials section">
+            <div className="section-heading">
+              <span className="eyebrow dark">TESTIMONIALS</span>
+              <h2>
+                What Our <span>Clients Say</span>
+              </h2>
+            </div>
+            <div className="testimonial-grid">
+              {testimonials.map(([quote, author]) => (
+                <article className="testimonial-card" key={author}>
+                  <Quote />
+                  <p>{quote}</p>
+                  <strong>{author}</strong>
+                </article>
+              ))}
+            </div>
+          </section>
+          <section className="contact-cta" id="contact">
+            <div className="cta-copy">
+              <span className="eyebrow">Talk with our experts</span>
+              <h2>Ready to Elevate Your Brand?</h2>
+              <p>
+                Partner with MAAINT and discover how strategic advertising can
+                help your business attract customers, increase revenue, and
+                build long-term market success. Let's create something
+                remarkable together.
+              </p>
+              <div className="cta-highlights">
+                <span>
+                  <Target />
+                  Campaign strategy
+                </span>
+                <span>
+                  <TrendingUp />
+                  Growth planning
+                </span>
+                <span>
+                  <MessagesSquare />
+                  Clear next steps
+                </span>
+              </div>
+              <div className="cta-actions">
+                <button className="button" onClick={openConsultationForm}>
+                  Book Your Free Consultation Today
+                  <ArrowRight size={17} />
+                </button>
+                <a href="mailto:hellow@maaint.co">hellow@maaint.co</a>
+              </div>
+            </div>
+            <div className="cta-panel">
+              <span>Free Consultation</span>
+              <strong>30 min</strong>
+              <p>
+                Review your brand goals, current marketing gaps, and the fastest
+                path to better results.
+              </p>
+            </div>
+          </section>
+        </main>
       )}
 
       <footer>
@@ -780,8 +916,11 @@ function App() {
           </div>
           <div>
             <h4>Contact</h4>
-            <a href="mailto:hello@maaint.co">
-              <Mail size={16} /> hello@maaint.co
+            <button type="button" onClick={openContactPage}>
+              Contact Page
+            </button>
+            <a href="mailto:hellow@maaint.co">
+              <Mail size={16} /> hellow@maaint.co
             </a>
             <a href="https://maaint.co">
               <ArrowRight size={16} /> MAAINT.co
@@ -839,11 +978,30 @@ function App() {
                 type="email"
                 placeholder="Email address"
               />
+              <input name="phone" placeholder="Phone number" />
               <textarea
                 name="message"
                 placeholder="Tell us about your project"
                 rows="4"
               />
+              <label className="sms-consent">
+                <input type="checkbox" name="marketingSmsConsent" value="Yes" />
+                By checking this box, you agree to receive recurring automated
+                marketing and promotional text messages from Maa International
+                LLC at the phone number provided. Message frequency varies (2-4
+                messages per month). Message and data rates may apply. Reply
+                STOP to opt out. Reply HELP for help. Consent is not a condition
+                of purchase.
+              </label>
+              <label className="sms-consent">
+                <input type="checkbox" name="serviceSmsConsent" value="Yes" />
+                By checking this box, you agree to receive non-marketing text
+                messages from Maa International LLC related to account
+                notifications, service updates, and appointment reminders.
+                Message frequency varies (up to 2 messages per month). Message
+                and data rates may apply. Reply STOP to opt out. Reply HELP for
+                help.
+              </label>
               <button className="button">
                 Send request <ArrowRight size={17} />
               </button>
