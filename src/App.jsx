@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Check,
@@ -493,15 +493,43 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
   const [legalPage, setLegalPage] = useState(null);
-  const [contactPageOpen, setContactPageOpen] = useState(false);
+  const [contactPageOpen, setContactPageOpen] = useState(
+    () => window.location.pathname === "/contact-us",
+  );
 
-  function openHome() {
+  useEffect(() => {
+    function syncRoute() {
+      setContactPageOpen(window.location.pathname === "/contact-us");
+      setLegalPage(null);
+      setMenuOpen(false);
+    }
+
+    window.addEventListener("popstate", syncRoute);
+    return () => window.removeEventListener("popstate", syncRoute);
+  }, []);
+
+  function scrollToSection(id) {
+    window.requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  function openHome(e) {
+    e?.preventDefault();
     setLegalPage(null);
     setContactPageOpen(false);
     setMenuOpen(false);
-    window.requestAnimationFrame(() => {
-      window.location.hash = "home";
-    });
+    window.history.pushState({}, "", "/#home");
+    scrollToSection("home");
+  }
+
+  function openSection(e, id) {
+    e.preventDefault();
+    setLegalPage(null);
+    setContactPageOpen(false);
+    setMenuOpen(false);
+    window.history.pushState({}, "", `/#${id}`);
+    scrollToSection(id);
   }
 
   function openLegalPage(page) {
@@ -515,6 +543,7 @@ function App() {
     setLegalPage(null);
     setContactPageOpen(true);
     setMenuOpen(false);
+    window.history.pushState({}, "", "/contact-us");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -561,11 +590,7 @@ function App() {
             <a
               key={id}
               href={`#${id}`}
-              onClick={() => {
-                setLegalPage(null);
-                setContactPageOpen(false);
-                setMenuOpen(false);
-              }}
+              onClick={(e) => openSection(e, id)}
             >
               {label}
             </a>
