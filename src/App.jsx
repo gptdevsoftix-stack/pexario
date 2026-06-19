@@ -383,7 +383,7 @@ function LegalPage({ page, onBack }) {
   );
 }
 
-function ContactPage({ onBack, onSubmit }) {
+function ContactPage({ onBack, onSubmit, onOpenLegalPage }) {
   return (
     <main className="contact-page">
       <section className="contact-page-hero">
@@ -457,6 +457,28 @@ function ContactPage({ onBack, onSubmit }) {
             frequency varies (up to 2 messages per month). Message and data
             rates may apply. Reply STOP to opt out. Reply HELP for help.
           </label>
+          <div className="form-legal-links">
+            <span>By submitting this form, you can review our</span>
+            <a
+              href="/privacy-policy"
+              onClick={(e) => {
+                e.preventDefault();
+                onOpenLegalPage("privacy");
+              }}
+            >
+              Privacy Policy
+            </a>
+            <span>and</span>
+            <a
+              href="/terms-and-conditions"
+              onClick={(e) => {
+                e.preventDefault();
+                onOpenLegalPage("terms");
+              }}
+            >
+              Terms & Conditions
+            </a>
+          </div>
           <button className="button" type="submit">
             Send request <ArrowRight size={17} />
           </button>
@@ -492,15 +514,27 @@ function ContactPage({ onBack, onSubmit }) {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
-  const [legalPage, setLegalPage] = useState(null);
+  const [legalPage, setLegalPage] = useState(() => {
+    if (window.location.pathname === "/privacy-policy") return "privacy";
+    if (window.location.pathname === "/terms-and-conditions") return "terms";
+    return null;
+  });
   const [contactPageOpen, setContactPageOpen] = useState(
     () => window.location.pathname === "/contact-us",
   );
 
   useEffect(() => {
     function syncRoute() {
-      setContactPageOpen(window.location.pathname === "/contact-us");
-      setLegalPage(null);
+      const { pathname } = window.location;
+
+      setContactPageOpen(pathname === "/contact-us");
+      setLegalPage(
+        pathname === "/privacy-policy"
+          ? "privacy"
+          : pathname === "/terms-and-conditions"
+            ? "terms"
+            : null,
+      );
       setMenuOpen(false);
     }
 
@@ -536,6 +570,11 @@ function App() {
     setLegalPage(page);
     setContactPageOpen(false);
     setMenuOpen(false);
+    window.history.pushState(
+      {},
+      "",
+      page === "privacy" ? "/privacy-policy" : "/terms-and-conditions",
+    );
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -595,12 +634,24 @@ function App() {
               {label}
             </a>
           ))}
-          <button type="button" onClick={() => openLegalPage("privacy")}>
+          <a
+            href="/privacy-policy"
+            onClick={(e) => {
+              e.preventDefault();
+              openLegalPage("privacy");
+            }}
+          >
             Privacy Policy
-          </button>
-          <button type="button" onClick={() => openLegalPage("terms")}>
+          </a>
+          <a
+            href="/terms-and-conditions"
+            onClick={(e) => {
+              e.preventDefault();
+              openLegalPage("terms");
+            }}
+          >
             Terms
-          </button>
+          </a>
         </nav>
         <button className="quote-button" onClick={openContactPage}>
           Contact Us <ArrowRight size={16} />
@@ -616,7 +667,11 @@ function App() {
       </header>
 
       {contactPageOpen ? (
-        <ContactPage onBack={openHome} onSubmit={handleConsultationSubmit} />
+        <ContactPage
+          onBack={openHome}
+          onSubmit={handleConsultationSubmit}
+          onOpenLegalPage={openLegalPage}
+        />
       ) : legalPage ? (
         <LegalPage page={legalPages[legalPage]} onBack={openHome} />
       ) : (
@@ -953,12 +1008,24 @@ function App() {
           </div>
           <div>
             <h4>Legal</h4>
-            <button type="button" onClick={() => openLegalPage("privacy")}>
+            <a
+              href="/privacy-policy"
+              onClick={(e) => {
+                e.preventDefault();
+                openLegalPage("privacy");
+              }}
+            >
               Privacy Policy
-            </button>
-            <button type="button" onClick={() => openLegalPage("terms")}>
+            </a>
+            <a
+              href="/terms-and-conditions"
+              onClick={(e) => {
+                e.preventDefault();
+                openLegalPage("terms");
+              }}
+            >
               Terms & Conditions
-            </button>
+            </a>
           </div>
           <div>
             <h4>Follow us</h4>
@@ -1027,6 +1094,30 @@ function App() {
                 and data rates may apply. Reply STOP to opt out. Reply HELP for
                 help.
               </label>
+              <div className="form-legal-links">
+                <span>By submitting this form, you can review our</span>
+                <a
+                  href="/privacy-policy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setQuoteOpen(false);
+                    openLegalPage("privacy");
+                  }}
+                >
+                  Privacy Policy
+                </a>
+                <span>and</span>
+                <a
+                  href="/terms-and-conditions"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setQuoteOpen(false);
+                    openLegalPage("terms");
+                  }}
+                >
+                  Terms & Conditions
+                </a>
+              </div>
               <button className="button">
                 Send request <ArrowRight size={17} />
               </button>

@@ -65,6 +65,8 @@
 .contact-form textarea{resize:vertical}
 .sms-consent{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;color:#516576;font-size:12px;line-height:1.6}
 .sms-consent input{margin-top:4px}
+.form-legal-links{display:flex;gap:6px;flex-wrap:wrap;align-items:center;color:#516576;font-size:12px;line-height:1.6}
+.form-legal-links a{color:#169cad;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .contact-aside{border:1px solid #e2ecee;padding:36px;background:#fff;box-shadow:0 16px 45px rgba(15,58,75,.07)}
 .contact-aside h2{font-size:34px;letter-spacing:0;margin-bottom:22px}
 .contact-aside ul{list-style:none;padding:0;margin:0 0 30px;display:grid;gap:16px}
