@@ -63,8 +63,8 @@ const legalPages = {
         "We use your information to:\n\n* Provide and deliver our Services\n* Send SMS and email communications (with consent)\n* Respond to inquiries\n* Process transactions\n* Improve our Website and Services\n* Maintain compliance records\n* Prevent fraud or abuse\n* Comply with legal obligations",
       ],
       [
-        "4. SMS Communications & Mobile Data Policy",
-        "If you provide your phone number and opt in to receive SMS communications:\n\n* You provide express written consent to receive recurring text messages from Maa International LLC.\n* Message frequency may vary.\n* Message and data rates may apply.\n* Consent is not a condition of purchase.\n* You may opt out at any time by replying STOP.\n* For assistance, reply HELP or contact hellow@maaint.co.\n\nMobile Information Sharing Statement\n\nWe do not sell, rent, share, or disclose mobile phone numbers or SMS opt-in data to third parties or affiliates for marketing or promotional purposes.\n\nMobile information is only shared with trusted service providers necessary to deliver SMS services, such as messaging platforms and carriers.",
+        "4. SMS Communications and Mobile Information",
+        "By providing your mobile phone number, you consent to receive SMS communications from MAAINT regarding appointments, service updates, customer support, and promotional messages where applicable.\n\nMessage frequency may vary. Message and data rates may apply.\n\nMobile information and SMS consent will not be shared, sold, rented, or disclosed to third parties or affiliates for marketing or promotional purposes.\n\nInformation sharing with subcontractors providing support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.",
       ],
       [
         "5. Cookies & Tracking",
@@ -118,67 +118,47 @@ const legalPages = {
         "You agree to:\n\n* Provide accurate and complete information\n* Use our Services in a lawful manner\n* Comply with TCPA, CTIA, CAN-SPAM, and all applicable federal, state, and local laws\n* Not misuse, interfere with, or disrupt our systems, networks, or Services\n* Maintain the confidentiality of any account credentials provided",
       ],
       [
-        "SMS Terms & Conditions",
-        "This section governs participation in Maa International LLC's SMS messaging program.",
+        "4. SMS Terms and Conditions",
+        "By opting into SMS communications from MAAINT, you agree to receive text messages related to:\n\n* Appointment reminders\n* Service updates\n* Customer support communications\n* Account notifications\n* Promotional and marketing messages (if applicable)\n\nMessage frequency may vary based on your interaction with our services.\n\nMessage and data rates may apply.\n\nYou can opt out at any time by replying STOP to any message.\n\nFor assistance, reply HELP or contact us through our website.\n\nConsent to receive SMS messages is not a condition of purchase.\n\nWireless carriers are not liable for delayed or undelivered messages.",
       ],
       [
-        "4. SMS Program Description",
-        "Maa International LLC may send marketing and informational text messages, including but not limited to:\n\n* Promotional offers\n* Service announcements\n* Appointment reminders\n* Account notifications\n* Customer support communications\n* Project updates and business-related notifications\n\nMessage frequency may vary based on customer interaction and service requirements.",
-      ],
-      [
-        "5. Opt-In Consent",
-        "By submitting your phone number and selecting the consent checkbox on our Website, forms, landing pages, or other communication channels, you expressly agree to receive SMS messages from Maa International LLC.\n\nConsent is not a condition of purchase.\n\nWe maintain records of SMS consent as required by applicable laws and regulations.",
-      ],
-      [
-        "6. Opt-Out Instructions",
-        "You may opt out of SMS communications at any time by replying:\n\nSTOP - To unsubscribe\nHELP - For assistance\n\nAfter opting out, you may receive a final confirmation message, and no further SMS messages will be sent unless you provide new consent.",
-      ],
-      [
-        "7. Message & Data Rates",
-        "Message and data rates may apply depending on your mobile carrier and service plan.\n\nCustomers are responsible for any charges imposed by their wireless provider.",
-      ],
-      [
-        "8. Carrier Liability Disclaimer",
-        "Wireless carriers are not liable for delayed, failed, or undelivered messages.\n\nDelivery is subject to effective transmission by your mobile carrier and network availability.",
-      ],
-      [
-        "9. Age Restriction",
+        "5. Age Restriction",
         "You must be at least eighteen (18) years old to use our SMS services or engage our Services independently.",
       ],
       [
-        "10. Payment Terms",
+        "6. Payment Terms",
         "* Fees and payment schedules are outlined in client agreements, proposals, or invoices.\n* Late payments may result in suspension or termination of Services.\n* Fees are non-refundable unless otherwise specified in writing.\n* Clients remain responsible for all outstanding balances for services rendered.",
       ],
       [
-        "11. Intellectual Property",
+        "7. Intellectual Property",
         "All Website content, branding, designs, graphics, systems, software, methodologies, and materials created by Maa International LLC remain the property of Maa International LLC unless otherwise agreed in writing.\n\nClients retain ownership of their pre-existing trademarks, logos, brand assets, and proprietary materials.",
       ],
       [
-        "12. Disclaimer of Warranties",
+        "8. Disclaimer of Warranties",
         'All Services are provided on an "as is" and "as available" basis without warranties of any kind, whether express or implied.\n\nMaa International LLC does not guarantee specific marketing performance, rankings, lead volume, revenue growth, or return on investment (ROI).',
       ],
       [
-        "13. Limitation of Liability",
+        "9. Limitation of Liability",
         "To the fullest extent permitted by law:\n\n* Maa International LLC shall not be liable for any indirect, incidental, consequential, special, or punitive damages.\n* Total liability arising from any claim shall not exceed the total amount paid by the client to Maa International LLC during the twelve (12) months preceding the claim.",
       ],
       [
-        "14. Indemnification",
+        "10. Indemnification",
         "You agree to indemnify, defend, and hold harmless Maa International LLC, its officers, employees, contractors, and affiliates from any claims, damages, liabilities, losses, or expenses arising from:\n\n* Your misuse of SMS services\n* Violations of advertising, telemarketing, privacy, or consumer protection laws\n* Unauthorized messaging activities\n* Breach of these Terms",
       ],
       [
-        "15. Termination",
+        "11. Termination",
         "Maa International LLC reserves the right to suspend or terminate Services immediately if:\n\n* You violate these Terms\n* Required payments become overdue\n* Fraudulent or unlawful activity is suspected\n* Termination is required by law or regulatory authorities",
       ],
       [
-        "16. Governing Law",
+        "12. Governing Law",
         "These Terms shall be governed by and interpreted under the laws of the United States and the Commonwealth of Virginia, without regard to conflict of law principles.\n\nAny disputes arising under these Terms shall be resolved exclusively in the state or federal courts located in Alexandria, Virginia.",
       ],
       [
-        "17. Updates to Terms",
+        "13. Updates to Terms",
         "Maa International LLC may modify or update these Terms at any time.\n\nUpdated versions will be posted on this page with a revised effective date. Continued use of the Website or Services after updates constitutes acceptance of the revised Terms.",
       ],
       [
-        "18. Contact Information",
+        "14. Contact Information",
         "Maa International LLC\nUnited States\n\nEmail: hellow@maaint.co\nWebsite: www.maaint.co",
       ],
     ],
@@ -442,23 +422,12 @@ function ContactPage({ onBack, onSubmit, onOpenLegalPage }) {
             rows="6"
           />
           <label className="sms-consent">
-            <input type="checkbox" name="marketingSmsConsent" value="Yes" />
-            By checking this box, you agree to receive recurring automated
-            marketing and promotional text messages from Maa International LLC
-            at the phone number provided. Message frequency varies (2-4 messages
-            per month). Message and data rates may apply. Reply STOP to opt out.
-            Reply HELP for help. Consent is not a condition of purchase.
-          </label>
-          <label className="sms-consent">
-            <input type="checkbox" name="serviceSmsConsent" value="Yes" />
-            By checking this box, you agree to receive non-marketing text
-            messages from Maa International LLC related to account
-            notifications, service updates, and appointment reminders. Message
-            frequency varies (up to 2 messages per month). Message and data
-            rates may apply. Reply STOP to opt out. Reply HELP for help.
-          </label>
-          <div className="form-legal-links">
-            <span>By submitting this form, you can review our</span>
+            <input type="checkbox" name="smsConsent" value="Yes" required />I
+            agree to receive SMS messages from MAAINT regarding my inquiry,
+            appointments, service updates, and promotional communications where
+            applicable. Message frequency may vary. Message and data rates may
+            apply. Reply STOP to opt out and HELP for assistance. I have read
+            and agree to the{" "}
             <a
               href="/privacy-policy"
               onClick={(e) => {
@@ -467,8 +436,8 @@ function ContactPage({ onBack, onSubmit, onOpenLegalPage }) {
               }}
             >
               Privacy Policy
-            </a>
-            <span>and</span>
+            </a>{" "}
+            and{" "}
             <a
               href="/terms-and-conditions"
               onClick={(e) => {
@@ -478,7 +447,8 @@ function ContactPage({ onBack, onSubmit, onOpenLegalPage }) {
             >
               Terms & Conditions
             </a>
-          </div>
+            .
+          </label>
           <button className="button" type="submit">
             Send request <ArrowRight size={17} />
           </button>
@@ -599,14 +569,13 @@ function App() {
     const phone = formData.get("phone");
     const business = formData.get("business");
     const service = formData.get("service");
-    const marketingSmsConsent = formData.get("marketingSmsConsent") || "No";
-    const serviceSmsConsent = formData.get("serviceSmsConsent") || "No";
+    const smsConsent = formData.get("smsConsent") || "No";
     const message = formData.get("message") || "No project details provided.";
     const subject = encodeURIComponent(
       "New consultation request from MAAINT.co",
     );
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\nBusiness: ${business || "Not provided"}\nService: ${service || "Not selected"}\nMarketing SMS Consent: ${marketingSmsConsent}\nService SMS Consent: ${serviceSmsConsent}\n\nProject details:\n${message}`,
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\nBusiness: ${business || "Not provided"}\nService: ${service || "Not selected"}\nSMS Consent: ${smsConsent}\n\nProject details:\n${message}`,
     );
 
     window.location.href = `mailto:hellow@maaint.co?subject=${subject}&body=${body}`;
@@ -997,7 +966,7 @@ function App() {
           <div>
             <h4>Contact</h4>
             <button type="button" onClick={openContactPage}>
-              Contact Page
+              Contact Us
             </button>
             <a href="mailto:hellow@maaint.co">
               <Mail size={16} /> hellow@maaint.co
@@ -1077,25 +1046,12 @@ function App() {
                 rows="4"
               />
               <label className="sms-consent">
-                <input type="checkbox" name="marketingSmsConsent" value="Yes" />
-                By checking this box, you agree to receive recurring automated
-                marketing and promotional text messages from Maa International
-                LLC at the phone number provided. Message frequency varies (2-4
-                messages per month). Message and data rates may apply. Reply
-                STOP to opt out. Reply HELP for help. Consent is not a condition
-                of purchase.
-              </label>
-              <label className="sms-consent">
-                <input type="checkbox" name="serviceSmsConsent" value="Yes" />
-                By checking this box, you agree to receive non-marketing text
-                messages from Maa International LLC related to account
-                notifications, service updates, and appointment reminders.
-                Message frequency varies (up to 2 messages per month). Message
-                and data rates may apply. Reply STOP to opt out. Reply HELP for
-                help.
-              </label>
-              <div className="form-legal-links">
-                <span>By submitting this form, you can review our</span>
+                <input type="checkbox" name="smsConsent" value="Yes" required />I
+                agree to receive SMS messages from MAAINT regarding my inquiry,
+                appointments, service updates, and promotional communications
+                where applicable. Message frequency may vary. Message and data
+                rates may apply. Reply STOP to opt out and HELP for assistance.
+                I have read and agree to the{" "}
                 <a
                   href="/privacy-policy"
                   onClick={(e) => {
@@ -1105,8 +1061,8 @@ function App() {
                   }}
                 >
                   Privacy Policy
-                </a>
-                <span>and</span>
+                </a>{" "}
+                and{" "}
                 <a
                   href="/terms-and-conditions"
                   onClick={(e) => {
@@ -1117,7 +1073,8 @@ function App() {
                 >
                   Terms & Conditions
                 </a>
-              </div>
+                .
+              </label>
               <button className="button">
                 Send request <ArrowRight size={17} />
               </button>
