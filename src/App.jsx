@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Check,
@@ -64,7 +64,7 @@ const legalPages = {
       ],
       [
         "4. SMS Communications and Mobile Information",
-        "By providing your mobile phone number, you consent to receive SMS communications from MAAINT regarding appointments, service updates, customer support, and promotional messages where applicable.\n\nMessage frequency may vary. Message and data rates may apply.\n\nMobile information and SMS consent will not be shared, sold, rented, or disclosed to third parties or affiliates for marketing or promotional purposes.\n\nInformation sharing with subcontractors providing support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.",
+        "By providing your mobile phone number, you consent to receive SMS communications from MAAINT regarding appointments, service updates, customer support, and promotional messages where applicable.\n\nMessage frequency may vary(4-6 messages per month ). Message and data rates may apply.\n\nMobile information and SMS consent will not be shared, sold, rented, or disclosed to third parties or affiliates for marketing or promotional purposes.\n\nInformation sharing with subcontractors providing support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.",
       ],
       [
         "5. Cookies & Tracking",
@@ -425,9 +425,9 @@ function ContactPage({ onBack, onSubmit, onOpenLegalPage }) {
             <input type="checkbox" name="smsConsent" value="Yes" required />I
             agree to receive SMS messages from MAAINT regarding my inquiry,
             appointments, service updates, and promotional communications where
-            applicable. Message frequency may vary. Message and data rates may
-            apply. Reply STOP to opt out and HELP for assistance. I have read
-            and agree to the{" "}
+            applicable. Message frequency may vary (4-6 messages per month ).
+            Message and data rates may apply. Reply STOP to opt out and HELP for
+            assistance. I have read and agree to the{" "}
             <a
               href="/privacy-policy"
               onClick={(e) => {
