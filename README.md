@@ -18,8 +18,8 @@ run through the development or preview server.
 
 ## Contact Form Email
 
-The contact forms submit directly to FormSubmit's AJAX endpoint, which forwards
-submissions to `Hello@maaint.co`.
+The contact forms submit directly to FormSubmit, which forwards submissions to
+`Hello@maaint.co`.
 
 No API key is required. On the first live submission, FormSubmit may send a
 confirmation email to `Hello@maaint.co`; confirm it once to activate delivery.

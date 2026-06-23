@@ -72,6 +72,11 @@
 .form-status.sending{color:#516576}
 .form-status.success{color:#127a4d}
 .form-status.error{color:#b42318}
+.formsubmit-frame{display:none;width:0;height:0;border:0}
+.thank-you-card{align-content:center;min-height:360px}
+.thank-you-card h2{font-size:34px;letter-spacing:0;margin-bottom:14px}
+.thank-you-card p{max-width:520px;margin-bottom:24px}
+.modal-thank-you{display:grid;gap:12px;min-height:auto}
 .contact-aside{border:1px solid #e2ecee;padding:36px;background:#fff;box-shadow:0 16px 45px rgba(15,58,75,.07)}
 .contact-aside h2{font-size:34px;letter-spacing:0;margin-bottom:22px}
 .contact-aside ul{list-style:none;padding:0;margin:0 0 30px;display:grid;gap:16px}

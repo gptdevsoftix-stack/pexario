@@ -44,7 +44,8 @@ const contactMethods = [
   ["Response Time", "Within 1 business day", "#contact"],
 ];
 
-const formSubmitEndpoint = "https://formsubmit.co/ajax/Hello@maaint.co";
+const formSubmitEndpoint = "https://formsubmit.co/Hello@maaint.co";
+const formSubmitTarget = "formsubmit-hidden-frame";
 
 const legalPages = {
   privacy: {
@@ -365,6 +366,20 @@ function LegalPage({ page, onBack }) {
   );
 }
 
+function FormSubmitFields() {
+  return (
+    <>
+      <input
+        type="hidden"
+        name="_subject"
+        value="New consultation request from MAAINT.co"
+      />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+    </>
+  );
+}
+
 function ContactPage({ onBack, onSubmit, onOpenLegalPage, submitState }) {
   return (
     <main className="contact-page">
@@ -391,80 +406,95 @@ function ContactPage({ onBack, onSubmit, onOpenLegalPage, submitState }) {
       </section>
 
       <section className="contact-page-body">
-        <form className="contact-form" onSubmit={onSubmit}>
-          <div className="form-row">
-            <input name="name" required placeholder="Your name" />
-            <input
-              name="email"
-              required
-              type="email"
-              placeholder="Email address"
-            />
+        {submitState.type === "success" ? (
+          <div className="contact-form thank-you-card">
+            <span className="eyebrow dark">Thank you</span>
+            <h2>We received your request.</h2>
+            <p>{submitState.message}</p>
           </div>
-          <div className="form-row">
-            <input name="phone" placeholder="Phone number" />
-            <input name="business" placeholder="Business name" />
-          </div>
-          <select name="service" defaultValue="">
-            <option value="" disabled>
-              Select a service
-            </option>
-            <option>Brand Strategy</option>
-            <option>Digital Advertising</option>
-            <option>Creative Design</option>
-            <option>Social Media Marketing</option>
-            <option>Website & Landing Page Development</option>
-            <option>Marketing Automation</option>
-            <option>Full-Service Marketing</option>
-          </select>
-          <textarea
-            name="message"
-            required
-            placeholder="Tell us about your project"
-            rows="6"
-          />
-          <label className="sms-consent">
-            <input type="checkbox" name="smsConsent" value="Yes" />I
-            agree to receive SMS messages from MAAINT regarding my inquiry,
-            appointments, service updates, and promotional communications where
-            applicable. Message frequency may vary (4-6 messages per month ).
-            Message and data rates may apply. Reply STOP to opt out and HELP for
-            assistance. I have read and agree to the{" "}
-            <a
-              href="/privacy-policy"
-              onClick={(e) => {
-                e.preventDefault();
-                onOpenLegalPage("privacy");
-              }}
-            >
-              Privacy Policy
-            </a>{" "}
-            and{" "}
-            <a
-              href="/terms-and-conditions"
-              onClick={(e) => {
-                e.preventDefault();
-                onOpenLegalPage("terms");
-              }}
-            >
-              Terms & Conditions
-            </a>
-            .
-          </label>
-          {submitState.message && (
-            <p className={`form-status ${submitState.type}`}>
-              {submitState.message}
-            </p>
-          )}
-          <button
-            className="button"
-            type="submit"
-            disabled={submitState.type === "sending"}
+        ) : (
+          <form
+            className="contact-form"
+            action={formSubmitEndpoint}
+            method="POST"
+            target={formSubmitTarget}
+            onSubmit={onSubmit}
           >
-            {submitState.type === "sending" ? "Sending..." : "Send request"}{" "}
-            <ArrowRight size={17} />
-          </button>
-        </form>
+            <FormSubmitFields />
+            <div className="form-row">
+              <input name="name" required placeholder="Your name" />
+              <input
+                name="email"
+                required
+                type="email"
+                placeholder="Email address"
+              />
+            </div>
+            <div className="form-row">
+              <input name="phone" placeholder="Phone number" />
+              <input name="business" placeholder="Business name" />
+            </div>
+            <select name="service" defaultValue="">
+              <option value="" disabled>
+                Select a service
+              </option>
+              <option>Brand Strategy</option>
+              <option>Digital Advertising</option>
+              <option>Creative Design</option>
+              <option>Social Media Marketing</option>
+              <option>Website & Landing Page Development</option>
+              <option>Marketing Automation</option>
+              <option>Full-Service Marketing</option>
+            </select>
+            <textarea
+              name="message"
+              required
+              placeholder="Tell us about your project"
+              rows="6"
+            />
+            <label className="sms-consent">
+              <input type="checkbox" name="SMS Consent" value="Yes" />I agree to
+              receive SMS messages from MAAINT regarding my inquiry,
+              appointments, service updates, and promotional communications
+              where applicable. Message frequency may vary (4-6 messages per
+              month ). Message and data rates may apply. Reply STOP to opt out
+              and HELP for assistance. I have read and agree to the{" "}
+              <a
+                href="/privacy-policy"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onOpenLegalPage("privacy");
+                }}
+              >
+                Privacy Policy
+              </a>{" "}
+              and{" "}
+              <a
+                href="/terms-and-conditions"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onOpenLegalPage("terms");
+                }}
+              >
+                Terms & Conditions
+              </a>
+              .
+            </label>
+            {submitState.message && (
+              <p className={`form-status ${submitState.type}`}>
+                {submitState.message}
+              </p>
+            )}
+            <button
+              className="button"
+              type="submit"
+              disabled={submitState.type === "sending"}
+            >
+              {submitState.type === "sending" ? "Sending..." : "Send request"}{" "}
+              <ArrowRight size={17} />
+            </button>
+          </form>
+        )}
 
         <aside className="contact-aside">
           <span className="eyebrow dark">What happens next</span>
@@ -565,76 +595,37 @@ function App() {
     setLegalPage(null);
     setContactPageOpen(true);
     setMenuOpen(false);
+    setSubmitState({ type: "idle", message: "" });
     window.history.pushState({}, "", "/contact-us");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function openConsultationForm() {
+    setSubmitState({ type: "idle", message: "" });
     setQuoteOpen(true);
   }
 
-  async function handleConsultationSubmit(e) {
-    e.preventDefault();
-
+  function handleConsultationSubmit(e) {
     const form = e.currentTarget;
-    const formData = new FormData(form);
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const phone = formData.get("phone");
-    const business = formData.get("business");
-    const service = formData.get("service");
-    const smsConsent = formData.get("smsConsent") || "No";
-    const message = formData.get("message") || "No project details provided.";
-
     setSubmitState({ type: "sending", message: "Sending your request..." });
 
-    try {
-      const submission = new URLSearchParams({
-        name,
-        email,
-        phone: phone || "Not provided",
-        business: business || "Not provided",
-        service: service || "Not selected",
-        "SMS Consent": smsConsent,
-        message,
-        _subject: "New consultation request from MAAINT.co",
-        _template: "table",
-        _captcha: "false",
-      });
-
-      const response = await fetch(formSubmitEndpoint, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: submission,
-      });
-
-      const result = await response.json().catch(() => ({}));
-
-      if (!response.ok || result.success === "false") {
-        throw new Error(result.error || "Unable to send your request.");
-      }
-
+    window.setTimeout(() => {
       form.reset();
       setSubmitState({
         type: "success",
-        message: "Thanks. Your request was sent successfully.",
-      });
-      setQuoteOpen(false);
-    } catch (error) {
-      setSubmitState({
-        type: "error",
         message:
-          error.message ||
-          "Something went wrong. Please email Hello@maaint.co directly.",
+          "Thank you for contacting MAAINT. We received your request and will get back to you soon.",
       });
-    }
+    }, 900);
   }
 
   return (
     <>
+      <iframe
+        className="formsubmit-frame"
+        title="Form submission"
+        name={formSubmitTarget}
+      />
       <header className="site-header">
         <a href="#home" className="logo" onClick={openHome}>
           <img
@@ -1083,63 +1074,86 @@ function App() {
             <p>
               We are ready to answer right now! Sign up for a free consultation.
             </p>
-            <form onSubmit={handleConsultationSubmit}>
-              <input name="name" required placeholder="Your name" />
-              <input
-                name="email"
-                required
-                type="email"
-                placeholder="Email address"
-              />
-              <input name="phone" placeholder="Phone number" />
-              <textarea
-                name="message"
-                placeholder="Tell us about your project"
-                rows="4"
-              />
-              <label className="sms-consent">
-                <input type="checkbox" name="smsConsent" value="Yes" />I
-                agree to receive SMS messages from MAAINT regarding my inquiry,
-                appointments, service updates, and promotional communications
-                where applicable. Message frequency may vary (4-6 messages per
-                month ). Message and data rates may apply. Reply STOP to opt out
-                and HELP for assistance. I have read and agree to the{" "}
-                <a
-                  href="/privacy-policy"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setQuoteOpen(false);
-                    openLegalPage("privacy");
-                  }}
+            {submitState.type === "success" ? (
+              <div className="thank-you-card modal-thank-you">
+                <span className="eyebrow dark">Thank you</span>
+                <h2>We received your request.</h2>
+                <p>{submitState.message}</p>
+                <button
+                  className="button"
+                  type="button"
+                  onClick={() => setQuoteOpen(false)}
                 >
-                  Privacy Policy
-                </a>{" "}
-                and{" "}
-                <a
-                  href="/terms-and-conditions"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setQuoteOpen(false);
-                    openLegalPage("terms");
-                  }}
-                >
-                  Terms & Conditions
-                </a>
-                .
-              </label>
-              {submitState.message && (
-                <p className={`form-status ${submitState.type}`}>
-                  {submitState.message}
-                </p>
-              )}
-              <button
-                className="button"
-                disabled={submitState.type === "sending"}
+                  Close <ArrowRight size={17} />
+                </button>
+              </div>
+            ) : (
+              <form
+                action={formSubmitEndpoint}
+                method="POST"
+                target={formSubmitTarget}
+                onSubmit={handleConsultationSubmit}
               >
-                {submitState.type === "sending" ? "Sending..." : "Send request"}{" "}
-                <ArrowRight size={17} />
-              </button>
-            </form>
+                <FormSubmitFields />
+                <input name="name" required placeholder="Your name" />
+                <input
+                  name="email"
+                  required
+                  type="email"
+                  placeholder="Email address"
+                />
+                <input name="phone" placeholder="Phone number" />
+                <textarea
+                  name="message"
+                  placeholder="Tell us about your project"
+                  rows="4"
+                />
+                <label className="sms-consent">
+                  <input type="checkbox" name="SMS Consent" value="Yes" />I
+                  agree to receive SMS messages from MAAINT regarding my inquiry,
+                  appointments, service updates, and promotional communications
+                  where applicable. Message frequency may vary (4-6 messages per
+                  month ). Message and data rates may apply. Reply STOP to opt
+                  out and HELP for assistance. I have read and agree to the{" "}
+                  <a
+                    href="/privacy-policy"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setQuoteOpen(false);
+                      openLegalPage("privacy");
+                    }}
+                  >
+                    Privacy Policy
+                  </a>{" "}
+                  and{" "}
+                  <a
+                    href="/terms-and-conditions"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setQuoteOpen(false);
+                      openLegalPage("terms");
+                    }}
+                  >
+                    Terms & Conditions
+                  </a>
+                  .
+                </label>
+                {submitState.message && (
+                  <p className={`form-status ${submitState.type}`}>
+                    {submitState.message}
+                  </p>
+                )}
+                <button
+                  className="button"
+                  disabled={submitState.type === "sending"}
+                >
+                  {submitState.type === "sending"
+                    ? "Sending..."
+                    : "Send request"}{" "}
+                  <ArrowRight size={17} />
+                </button>
+              </form>
+            )}
           </div>
         </div>
       )}
