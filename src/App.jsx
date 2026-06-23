@@ -39,10 +39,12 @@ const nav = [
 ];
 
 const contactMethods = [
-  ["Email", "hellow@maaint.co", "mailto:hellow@maaint.co"],
+  ["Email", "Hello@maaint.co", "mailto:Hello@maaint.co"],
   ["Website", "MAAINT.co", "https://maaint.co"],
   ["Response Time", "Within 1 business day", "#contact"],
 ];
+
+const formSubmitEndpoint = "https://formsubmit.co/ajax/Hello@maaint.co";
 
 const legalPages = {
   privacy: {
@@ -80,7 +82,7 @@ const legalPages = {
       ],
       [
         "8. Your Rights (Including California Residents - CCPA)",
-        "Depending on your location, you may have the right to:\n\n* Request access to your personal data\n* Request correction or deletion\n* Request disclosure of collected data categories\n* Withdraw consent\n\nWe do not sell personal data.\n\nTo exercise your rights, contact:\n\nEmail: hellow@maaint.co",
+        "Depending on your location, you may have the right to:\n\n* Request access to your personal data\n* Request correction or deletion\n* Request disclosure of collected data categories\n* Withdraw consent\n\nWe do not sell personal data.\n\nTo exercise your rights, contact:\n\nEmail: Hello@maaint.co",
       ],
       [
         "9. Children's Privacy",
@@ -96,7 +98,7 @@ const legalPages = {
       ],
       [
         "12. Contact Information",
-        "Maa International LLC\nUnited States\n\nEmail: hellow@maaint.co\nWebsite: https://maaint.co",
+        "Maa International LLC\nUnited States\n\nEmail: Hello@maaint.co\nWebsite: https://maaint.co",
       ],
     ],
   },
@@ -159,7 +161,7 @@ const legalPages = {
       ],
       [
         "14. Contact Information",
-        "Maa International LLC\nUnited States\n\nEmail: hellow@maaint.co\nWebsite: www.maaint.co",
+        "Maa International LLC\nUnited States\n\nEmail: Hello@maaint.co\nWebsite: www.maaint.co",
       ],
     ],
   },
@@ -363,7 +365,7 @@ function LegalPage({ page, onBack }) {
   );
 }
 
-function ContactPage({ onBack, onSubmit, onOpenLegalPage }) {
+function ContactPage({ onBack, onSubmit, onOpenLegalPage, submitState }) {
   return (
     <main className="contact-page">
       <section className="contact-page-hero">
@@ -422,7 +424,7 @@ function ContactPage({ onBack, onSubmit, onOpenLegalPage }) {
             rows="6"
           />
           <label className="sms-consent">
-            <input type="checkbox" name="smsConsent" value="Yes" required />I
+            <input type="checkbox" name="smsConsent" value="Yes" />I
             agree to receive SMS messages from MAAINT regarding my inquiry,
             appointments, service updates, and promotional communications where
             applicable. Message frequency may vary (4-6 messages per month ).
@@ -449,8 +451,18 @@ function ContactPage({ onBack, onSubmit, onOpenLegalPage }) {
             </a>
             .
           </label>
-          <button className="button" type="submit">
-            Send request <ArrowRight size={17} />
+          {submitState.message && (
+            <p className={`form-status ${submitState.type}`}>
+              {submitState.message}
+            </p>
+          )}
+          <button
+            className="button"
+            type="submit"
+            disabled={submitState.type === "sending"}
+          >
+            {submitState.type === "sending" ? "Sending..." : "Send request"}{" "}
+            <ArrowRight size={17} />
           </button>
         </form>
 
@@ -492,6 +504,7 @@ function App() {
   const [contactPageOpen, setContactPageOpen] = useState(
     () => window.location.pathname === "/contact-us",
   );
+  const [submitState, setSubmitState] = useState({ type: "idle", message: "" });
 
   useEffect(() => {
     function syncRoute() {
@@ -560,10 +573,11 @@ function App() {
     setQuoteOpen(true);
   }
 
-  function handleConsultationSubmit(e) {
+  async function handleConsultationSubmit(e) {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const name = formData.get("name");
     const email = formData.get("email");
     const phone = formData.get("phone");
@@ -571,15 +585,52 @@ function App() {
     const service = formData.get("service");
     const smsConsent = formData.get("smsConsent") || "No";
     const message = formData.get("message") || "No project details provided.";
-    const subject = encodeURIComponent(
-      "New consultation request from MAAINT.co",
-    );
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\nBusiness: ${business || "Not provided"}\nService: ${service || "Not selected"}\nSMS Consent: ${smsConsent}\n\nProject details:\n${message}`,
-    );
 
-    window.location.href = `mailto:hellow@maaint.co?subject=${subject}&body=${body}`;
-    setQuoteOpen(false);
+    setSubmitState({ type: "sending", message: "Sending your request..." });
+
+    try {
+      const submission = new URLSearchParams({
+        name,
+        email,
+        phone: phone || "Not provided",
+        business: business || "Not provided",
+        service: service || "Not selected",
+        "SMS Consent": smsConsent,
+        message,
+        _subject: "New consultation request from MAAINT.co",
+        _template: "table",
+        _captcha: "false",
+      });
+
+      const response = await fetch(formSubmitEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: submission,
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || result.success === "false") {
+        throw new Error(result.error || "Unable to send your request.");
+      }
+
+      form.reset();
+      setSubmitState({
+        type: "success",
+        message: "Thanks. Your request was sent successfully.",
+      });
+      setQuoteOpen(false);
+    } catch (error) {
+      setSubmitState({
+        type: "error",
+        message:
+          error.message ||
+          "Something went wrong. Please email Hello@maaint.co directly.",
+      });
+    }
   }
 
   return (
@@ -636,11 +687,12 @@ function App() {
       </header>
 
       {contactPageOpen ? (
-        <ContactPage
-          onBack={openHome}
-          onSubmit={handleConsultationSubmit}
-          onOpenLegalPage={openLegalPage}
-        />
+          <ContactPage
+            onBack={openHome}
+            onSubmit={handleConsultationSubmit}
+            onOpenLegalPage={openLegalPage}
+            submitState={submitState}
+          />
       ) : legalPage ? (
         <LegalPage page={legalPages[legalPage]} onBack={openHome} />
       ) : (
@@ -927,7 +979,7 @@ function App() {
                   Book Your Free Consultation Today
                   <ArrowRight size={17} />
                 </button>
-                <a href="mailto:hellow@maaint.co">hellow@maaint.co</a>
+                <a href="mailto:Hello@maaint.co">Hello@maaint.co</a>
               </div>
             </div>
             <div className="cta-panel">
@@ -968,8 +1020,8 @@ function App() {
             <button type="button" onClick={openContactPage}>
               Contact Us
             </button>
-            <a href="mailto:hellow@maaint.co">
-              <Mail size={16} /> hellow@maaint.co
+            <a href="mailto:Hello@maaint.co">
+              <Mail size={16} /> Hello@maaint.co
             </a>
             <a href="https://maaint.co">
               <ArrowRight size={16} /> MAAINT.co
@@ -1046,12 +1098,12 @@ function App() {
                 rows="4"
               />
               <label className="sms-consent">
-                <input type="checkbox" name="smsConsent" value="Yes" required />I
+                <input type="checkbox" name="smsConsent" value="Yes" />I
                 agree to receive SMS messages from MAAINT regarding my inquiry,
                 appointments, service updates, and promotional communications
-                where applicable. Message frequency may vary. Message and data
-                rates may apply. Reply STOP to opt out and HELP for assistance.
-                I have read and agree to the{" "}
+                where applicable. Message frequency may vary (4-6 messages per
+                month ). Message and data rates may apply. Reply STOP to opt out
+                and HELP for assistance. I have read and agree to the{" "}
                 <a
                   href="/privacy-policy"
                   onClick={(e) => {
@@ -1075,8 +1127,17 @@ function App() {
                 </a>
                 .
               </label>
-              <button className="button">
-                Send request <ArrowRight size={17} />
+              {submitState.message && (
+                <p className={`form-status ${submitState.type}`}>
+                  {submitState.message}
+                </p>
+              )}
+              <button
+                className="button"
+                disabled={submitState.type === "sending"}
+              >
+                {submitState.type === "sending" ? "Sending..." : "Send request"}{" "}
+                <ArrowRight size={17} />
               </button>
             </form>
           </div>
