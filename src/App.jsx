@@ -480,6 +480,17 @@ function ContactPage({ onBack, onSubmit, onOpenLegalPage, submitState }) {
               </a>
               .
             </label>
+            <label className="sms-consent">
+              <input
+                type="checkbox"
+                name="Marketing Text Message Consent"
+                value="Yes"
+              />
+              I agree to receive marketing text messages from MAA INTERNATIONAL
+              USA. Message frequency varies (4-6 messages per month). Msg & data
+              rates may apply. Reply STOP to opt out, HELP for help. Consent is
+              not a condition of purchase.
+            </label>
             {submitState.message && (
               <p className={`form-status ${submitState.type}`}>
                 {submitState.message}
@@ -1137,6 +1148,17 @@ function App() {
                     Terms & Conditions
                   </a>
                   .
+                </label>
+                <label className="sms-consent">
+                  <input
+                    type="checkbox"
+                    name="Marketing Text Message Consent"
+                    value="Yes"
+                  />
+                  I agree to receive marketing text messages from MAA
+                  INTERNATIONAL USA. Message frequency varies (4-6 messages per
+                  month). Msg & data rates may apply. Reply STOP to opt out, HELP
+                  for help. Consent is not a condition of purchase.
                 </label>
                 {submitState.message && (
                   <p className={`form-status ${submitState.type}`}>
