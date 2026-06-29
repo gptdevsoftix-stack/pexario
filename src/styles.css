@@ -32,6 +32,7 @@
 
 .site-header nav button{border:0;background:none;padding:0;color:inherit;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 .site-header nav button:hover{color:var(--cyan)}
+.site-header .nav-phone{display:flex;align-items:center;gap:6px;color:#159baa;white-space:nowrap}
 .footer-main button{border:0;background:none;padding:0;color:#9eb0bc;font:inherit;font-size:12px;margin-bottom:13px;display:block;cursor:pointer;text-align:left}
 .footer-main button:hover{color:var(--cyan2)}
 .legal-page{background:#fff}
@@ -63,8 +64,9 @@
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .contact-form input,.contact-form textarea,.contact-form select{border:1px solid #dfeaec;background:#fff;padding:15px;font:inherit;font-size:13px;color:var(--navy)}
 .contact-form textarea{resize:vertical}
-.sms-consent{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;color:#516576;font-size:12px;line-height:1.6}
-.sms-consent input{margin-top:4px}
+.sms-consent{display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;align-items:start;color:#516576;font-size:12px;line-height:1.6}
+.contact-form .sms-consent input,.modal .sms-consent input{width:16px;height:16px;margin:2px 0 0;padding:0;border:1px solid #b9c9cf;accent-color:var(--cyan);flex:0 0 16px}
+.sms-consent span{display:block;min-width:0}
 .form-legal-links{display:flex;gap:6px;flex-wrap:wrap;align-items:center;color:#516576;font-size:12px;line-height:1.6}
 .form-legal-links a{color:#169cad;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .button:disabled{opacity:.7;cursor:not-allowed;transform:none}

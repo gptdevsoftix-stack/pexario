@@ -12,6 +12,7 @@ import {
   MessagesSquare,
   Menu,
   Palette,
+  Phone,
   Quote,
   Rocket,
   ShieldCheck,
@@ -39,6 +40,7 @@ const nav = [
 ];
 
 const contactMethods = [
+  ["Phone", "+1 804-552-6635", "tel:+18045526635"],
   ["Email", "Hello@maaint.co", "mailto:Hello@maaint.co"],
   ["Website", "MAAINT.co", "https://maaint.co"],
   ["Response Time", "Within 1 business day", "#contact"],
@@ -99,7 +101,7 @@ const legalPages = {
       ],
       [
         "12. Contact Information",
-        "Maa International LLC\nUnited States\n\nEmail: Hello@maaint.co\nWebsite: https://maaint.co",
+        "Maa International LLC\nUnited States\n\nPhone: +1 804-552-6635\nEmail: Hello@maaint.co\nWebsite: https://maaint.co",
       ],
     ],
   },
@@ -162,7 +164,7 @@ const legalPages = {
       ],
       [
         "14. Contact Information",
-        "Maa International LLC\nUnited States\n\nEmail: Hello@maaint.co\nWebsite: www.maaint.co",
+        "Maa International LLC\nUnited States\n\nPhone: +1 804-552-6635\nEmail: Hello@maaint.co\nWebsite: www.maaint.co",
       ],
     ],
   },
@@ -453,43 +455,47 @@ function ContactPage({ onBack, onSubmit, onOpenLegalPage, submitState }) {
               rows="6"
             />
             <label className="sms-consent">
-              <input type="checkbox" name="SMS Consent" value="Yes" />I agree to
-              receive SMS messages from MAAINT regarding my inquiry,
-              appointments, service updates, and promotional communications
-              where applicable. Message frequency may vary (4-6 messages per
-              month ). Message and data rates may apply. Reply STOP to opt out
-              and HELP for assistance. I have read and agree to the{" "}
-              <a
-                href="/privacy-policy"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onOpenLegalPage("privacy");
-                }}
-              >
-                Privacy Policy
-              </a>{" "}
-              and{" "}
-              <a
-                href="/terms-and-conditions"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onOpenLegalPage("terms");
-                }}
-              >
-                Terms & Conditions
-              </a>
-              .
-            </label>
-            <label className="sms-consent">
               <input
                 type="checkbox"
                 name="Marketing Text Message Consent"
                 value="Yes"
               />
-              I agree to receive marketing text messages from MAA INTERNATIONAL
-              USA. Message frequency varies (4-6 messages per month). Msg & data
-              rates may apply. Reply STOP to opt out, HELP for help. Consent is
-              not a condition of purchase.
+              <span>
+                I agree to receive marketing text messages from MAA INTERNATIONAL
+                USA. Message frequency varies (4-6 messages per month). Msg & data
+                rates may apply. Reply STOP to opt out, HELP for help. Consent is
+                not a condition of purchase.
+              </span>
+            </label>
+            <label className="sms-consent">
+              <input type="checkbox" name="SMS Consent" value="Yes" />
+              <span>
+                I agree to receive SMS messages from MAAINT regarding my inquiry,
+                appointments, service updates, and promotional communications
+                where applicable. Message frequency may vary (4-6 messages per
+                month ). Message and data rates may apply. Reply STOP to opt out
+                and HELP for assistance. I have read and agree to the{" "}
+                <a
+                  href="/privacy-policy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onOpenLegalPage("privacy");
+                  }}
+                >
+                  Privacy Policy
+                </a>{" "}
+                and{" "}
+                <a
+                  href="/terms-and-conditions"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onOpenLegalPage("terms");
+                  }}
+                >
+                  Terms & Conditions
+                </a>
+                .
+              </span>
             </label>
             {submitState.message && (
               <p className={`form-status ${submitState.type}`}>
@@ -981,6 +987,7 @@ function App() {
                   Book Your Free Consultation Today
                   <ArrowRight size={17} />
                 </button>
+                <a href="tel:+18045526635">+1 804-552-6635</a>
                 <a href="mailto:Hello@maaint.co">Hello@maaint.co</a>
               </div>
             </div>
@@ -1024,6 +1031,9 @@ function App() {
             </button>
             <a href="mailto:Hello@maaint.co">
               <Mail size={16} /> Hello@maaint.co
+            </a>
+            <a href="tel:+18045526635">
+              <Phone size={16} /> +1 804-552-6635
             </a>
             <a href="https://maaint.co">
               <ArrowRight size={16} /> MAAINT.co
@@ -1120,45 +1130,50 @@ function App() {
                   rows="4"
                 />
                 <label className="sms-consent">
-                  <input type="checkbox" name="SMS Consent" value="Yes" />I
-                  agree to receive SMS messages from MAAINT regarding my inquiry,
-                  appointments, service updates, and promotional communications
-                  where applicable. Message frequency may vary (4-6 messages per
-                  month ). Message and data rates may apply. Reply STOP to opt
-                  out and HELP for assistance. I have read and agree to the{" "}
-                  <a
-                    href="/privacy-policy"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setQuoteOpen(false);
-                      openLegalPage("privacy");
-                    }}
-                  >
-                    Privacy Policy
-                  </a>{" "}
-                  and{" "}
-                  <a
-                    href="/terms-and-conditions"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setQuoteOpen(false);
-                      openLegalPage("terms");
-                    }}
-                  >
-                    Terms & Conditions
-                  </a>
-                  .
-                </label>
-                <label className="sms-consent">
                   <input
                     type="checkbox"
                     name="Marketing Text Message Consent"
                     value="Yes"
                   />
-                  I agree to receive marketing text messages from MAA
-                  INTERNATIONAL USA. Message frequency varies (4-6 messages per
-                  month). Msg & data rates may apply. Reply STOP to opt out, HELP
-                  for help. Consent is not a condition of purchase.
+                  <span>
+                    I agree to receive marketing text messages from MAA
+                    INTERNATIONAL USA. Message frequency varies (4-6 messages per
+                    month). Msg & data rates may apply. Reply STOP to opt out,
+                    HELP for help. Consent is not a condition of purchase.
+                  </span>
+                </label>
+                <label className="sms-consent">
+                  <input type="checkbox" name="SMS Consent" value="Yes" />
+                  <span>
+                    I agree to receive SMS messages from MAAINT regarding my
+                    inquiry, appointments, service updates, and promotional
+                    communications where applicable. Message frequency may vary
+                    (4-6 messages per month ). Message and data rates may apply.
+                    Reply STOP to opt out and HELP for assistance. I have read and
+                    agree to the{" "}
+                    <a
+                      href="/privacy-policy"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setQuoteOpen(false);
+                        openLegalPage("privacy");
+                      }}
+                    >
+                      Privacy Policy
+                    </a>{" "}
+                    and{" "}
+                    <a
+                      href="/terms-and-conditions"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setQuoteOpen(false);
+                        openLegalPage("terms");
+                      }}
+                    >
+                      Terms & Conditions
+                    </a>
+                    .
+                  </span>
                 </label>
                 {submitState.message && (
                   <p className={`form-status ${submitState.type}`}>
