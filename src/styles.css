@@ -67,6 +67,9 @@
 .sms-consent{display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;align-items:start;color:#516576;font-size:12px;line-height:1.6}
 .contact-form .sms-consent input,.modal .sms-consent input{width:16px;height:16px;margin:2px 0 0;padding:0;border:1px solid #b9c9cf;accent-color:var(--cyan);flex:0 0 16px}
 .sms-consent span{display:block;min-width:0}
+.sms-consent .consent-links{margin-top:5px}
+.sms-consent .consent-links>a{color:#0e8796;text-decoration:underline;text-underline-offset:2px}
+.sms-consent .consent-links>span{display:inline;margin:0 5px;color:#91a0aa}
 .form-legal-links{display:flex;gap:6px;flex-wrap:wrap;align-items:center;color:#516576;font-size:12px;line-height:1.6}
 .form-legal-links a{color:#169cad;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .button:disabled{opacity:.7;cursor:not-allowed;transform:none}

@@ -470,31 +470,32 @@ function ContactPage({ onBack, onSubmit, onOpenLegalPage, submitState }) {
             <label className="sms-consent">
               <input type="checkbox" name="SMS Consent" value="Yes" />
               <span>
-                I agree to receive SMS messages from MAAINT regarding my inquiry,
-                appointments, service updates, and promotional communications
-                where applicable. Message frequency may vary (4-6 messages per
-                month ). Message and data rates may apply. Reply STOP to opt out
-                and HELP for assistance. I have read and agree to the{" "}
-                <a
-                  href="/privacy-policy"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onOpenLegalPage("privacy");
-                  }}
-                >
-                  Privacy Policy
-                </a>{" "}
-                and{" "}
-                <a
-                  href="/terms-and-conditions"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onOpenLegalPage("terms");
-                  }}
-                >
-                  Terms & Conditions
-                </a>
-                .
+                I agree to receive informational SMS messages from MAA
+                International USA regarding my inquiries, appointments, account
+                updates, and requested services. Message frequency varies (4-6
+                messages per month). Msg & data rates may apply. Reply STOP to
+                opt out and HELP for help.
+                <span className="consent-links">
+                  <a
+                    href="/privacy-policy"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onOpenLegalPage("privacy");
+                    }}
+                  >
+                    Privacy Policy
+                  </a>
+                  <span aria-hidden="true"> | </span>
+                  <a
+                    href="/terms-and-conditions"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onOpenLegalPage("terms");
+                    }}
+                  >
+                    Terms & Conditions
+                  </a>
+                </span>
               </span>
             </label>
             {submitState.message && (
@@ -1145,34 +1146,34 @@ function App() {
                 <label className="sms-consent">
                   <input type="checkbox" name="SMS Consent" value="Yes" />
                   <span>
-                    I agree to receive SMS messages from MAAINT regarding my
-                    inquiry, appointments, service updates, and promotional
-                    communications where applicable. Message frequency may vary
-                    (4-6 messages per month ). Message and data rates may apply.
-                    Reply STOP to opt out and HELP for assistance. I have read and
-                    agree to the{" "}
-                    <a
-                      href="/privacy-policy"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setQuoteOpen(false);
-                        openLegalPage("privacy");
-                      }}
-                    >
-                      Privacy Policy
-                    </a>{" "}
-                    and{" "}
-                    <a
-                      href="/terms-and-conditions"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setQuoteOpen(false);
-                        openLegalPage("terms");
-                      }}
-                    >
-                      Terms & Conditions
-                    </a>
-                    .
+                    I agree to receive informational SMS messages from MAA
+                    International USA regarding my inquiries, appointments,
+                    account updates, and requested services. Message frequency
+                    varies (4-6 messages per month). Msg & data rates may apply.
+                    Reply STOP to opt out and HELP for help.
+                    <span className="consent-links">
+                      <a
+                        href="/privacy-policy"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setQuoteOpen(false);
+                          openLegalPage("privacy");
+                        }}
+                      >
+                        Privacy Policy
+                      </a>
+                      <span aria-hidden="true"> | </span>
+                      <a
+                        href="/terms-and-conditions"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setQuoteOpen(false);
+                          openLegalPage("terms");
+                        }}
+                      >
+                        Terms & Conditions
+                      </a>
+                    </span>
                   </span>
                 </label>
                 {submitState.message && (
